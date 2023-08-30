@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Monument Extended';
+    // font-family: var(--font-monument-extended);
+    src: url('../../shared/assets/fonts/monument-extended-regular.woff') format('woff2'),
+         url('../../shared/assets/fonts/monument-extended-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../shared/assets/fonts/roboto-regular.woff2') format('woff2'),
+         url('../../shared/assets/fonts/roboto-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('../../shared/assets/fonts/comic-sans-ms.woff2') format('woff2'),
+         url('../../shared/assets/fonts/comic-sans-ms.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  

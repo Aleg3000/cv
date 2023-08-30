@@ -1,0 +1,54 @@
+.About {
+    width: 86rem;
+    height: 15rem;
+    border-radius: 50px;
+    border: 5px solid var(--color-shocking-pink);
+    background: var(--color-carousel-pink);
+    cursor: pointer;
+    // transition: height 1s ease-in;
+    overflow: hidden;
+
+    h1 {
+        color: var(--color-golden-fizz);
+        -webkit-text-stroke: 0.5rem var(--color-shocking-pink);
+        font-family: 'Monument Extended';
+        // font-family: var(--font-monument-extended);
+        font-size: 8rem;
+        font-style: normal;
+        font-weight: 400;
+        // line-height: normal;
+        text-transform: uppercase;
+    }
+}
+
+.wrapper {
+    margin: 3rem auto;
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 3rem;
+}
+
+.description {
+    opacity: 0;
+    font-family: 'Comic Sans MS';
+    color: var(--color-rose-bud-cherry);
+    font-size: 2.1rem;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    line-height: normal;
+
+    h2 {
+        font-size: 4rem;
+        font-style: normal;
+    }
+
+    p {
+        width: 37rem;
+        font-style: italic;
+    }
+} 

@@ -1,1 +1,0 @@
-export const fn = () => '2345ererer'

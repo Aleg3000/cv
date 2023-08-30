@@ -1,0 +1,24 @@
+@import "reset";
+@import "variables/global";
+@import "utils/mixins";
+@import "utils/variables";
+@import "fonts";
+
+html {
+    @extend %cover;
+  
+    background: var(--color-chartreuse);
+    color: var(--color-white);
+    font-size: calc(100vw / 1280 * 10);
+    font-family: var(--font-monument-extended);
+    line-height: 1;
+    overflow: hidden;
+    position: fixed;
+  }
+  
+  body {
+    @extend %cover;
+
+    position: fixed;
+  }
+
