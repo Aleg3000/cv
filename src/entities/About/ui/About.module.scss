@@ -5,19 +5,15 @@
     border: 5px solid var(--color-shocking-pink);
     background: var(--color-carousel-pink);
     cursor: pointer;
-    // transition: height 1s ease-in;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0;
 
-    h1 {
-        color: var(--color-golden-fizz);
-        -webkit-text-stroke: 0.5rem var(--color-shocking-pink);
-        font-family: 'Monument Extended';
-        // font-family: var(--font-monument-extended);
-        font-size: 8rem;
-        font-style: normal;
-        font-weight: 400;
-        // line-height: normal;
-        text-transform: uppercase;
+    .title {
+        padding-left: 13.3rem;
+        // opacity: 1;
     }
 }
 
@@ -32,6 +28,7 @@
 }
 
 .description {
+    padding-left: 13.3rem;
     opacity: 0;
     font-family: 'Comic Sans MS';
     color: var(--color-rose-bud-cherry);

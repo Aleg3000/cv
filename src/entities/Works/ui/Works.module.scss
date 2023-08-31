@@ -23,51 +23,25 @@
     // transition: transform 1s ease;
 }
 
-.work {
-    // display: none;
-    opacity: 0;
-    position: relative;
-    flex-shrink: 0;
-    width: 67rem;
-    height: 48.5rem;
-    border-radius: 2.5rem;
-    overflow: hidden;
-}
-
-.figure {
-    position: relative;
-    width: 67rem;
-    height: 48.5rem;
-}
-
-.image {
-    height: 100%;
-    left: 0;
+.close {
     position: absolute;
     top: 0;
-    width: 100%;
-    background-image: url('../../../shared/assets/pictures/work1.png');
-    object-fit: cover;
-    background-size: cover;
+    right: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--color-golden-fizz);
+    border: 0.2rem var(--color-torea-bay) solid;
+    color: var(--color-blue-ribbon);
+    font-size: 3.5rem;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.description {
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate((-50%, -50%));
-    z-index: 10;
-    width: 35rem;
-    height: 23.5rem;
-    flex-shrink: 0;
-    color: var(--color-chartreuse);
+.close:after{
+    display: inline-block;
+    content: "\00d7"; /* This will render the 'X' */
+  }
 
-    text-align: center;
-    font-family: 'Monument Extended';
-    font-size: 2.2rem;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    text-transform: capitalize;
-}

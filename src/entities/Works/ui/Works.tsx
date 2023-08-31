@@ -8,6 +8,10 @@ import { getIsWorksClosing, getIsWorksOpen, getIsWorksOpening } from '../model/s
 import cls from './Works.module.scss'
 import gsap from 'gsap'
 import { aboutActions } from 'entities/About'
+import { getCurrentProject } from '../model/selectors/getCurrentProject/getCurrentProject'
+import { projectData } from '../data/data'
+import image from '../../../shared/assets/pictures/work1.png'
+import { Work } from 'widgets/Work'
 
 interface WorksProps {
     className?: string
@@ -25,6 +29,8 @@ export const Works: FC<WorksProps> = ({ className }) => {
     const isWorksOpened = useSelector(getIsWorksOpen)
     const isWorksOpening = useSelector(getIsWorksOpening)
     const isWorksClosing = useSelector(getIsWorksClosing)
+    const currentProject = useSelector(getCurrentProject)
+    const workDescription = projectData[currentProject].description
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -75,10 +81,8 @@ export const Works: FC<WorksProps> = ({ className }) => {
         if (isWorksClosing) tl.current.reverse()
     }, [dispatch, isWorksOpening, isWorksClosing, isAboutOpened])
 
-    const onClick = () => {
-        if (isWorksOpened) {
-            dispatch(worksActions.close())
-        } else {
+    const onClick = (): void => {
+        if (!isWorksOpened) {
             dispatch(worksActions.open())
         }
     }
@@ -86,14 +90,8 @@ export const Works: FC<WorksProps> = ({ className }) => {
     return (
         <div ref={wrapper} onClick={onClick} className={classNames(cls.Works, [className])}>
             <WorksLogo logoRef={logo} />
-            <div ref={work} className={cls.work}>
-                <figure className={cls.figure}>
-                    <image className={cls.image}></image>
-                </figure>
-                <div ref={text} className={cls.description}>
-                    I&aposm a creative developer with years of experience in building products and appealing web experiences. I&aposve collaborated with individuals and teams to build experiences
-                </div>
-            </div>
+            <Work image={image} text={text} wrapper={work} description={workDescription} />
+            {isWorksOpened && <div onClick={() => { dispatch(worksActions.close()) }} className={cls.close}></div>}
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { projectData } from 'entities/Works/data/data'
 import { type WorksSchema } from '../types/worksSchema'
 
 const initialState: WorksSchema = {
@@ -6,7 +7,7 @@ const initialState: WorksSchema = {
     isOpening: false,
     isClosing: false,
     currentProject: 0,
-    projectsQuantity: 5
+    projectsQuantity: projectData.length - 1
 }
 
 export const worksSlice = createSlice({
@@ -24,10 +25,10 @@ export const worksSlice = createSlice({
             state.isClosing = false
             state.isOpening = false
         },
-        nextProject: (state) => {
-            state.currentProject = state.currentProject + 1 > state.projectsQuantity ? state.currentProject + 1 : 0
+        toNextProject: (state) => {
+            state.currentProject = state.currentProject + 1 > state.projectsQuantity ? 0 : state.currentProject + 1
         },
-        prevProject: (state) => {
+        toPrevProject: (state) => {
             state.currentProject = state.currentProject - 1 < 0 ? state.projectsQuantity : state.currentProject - 1
         }
     }
