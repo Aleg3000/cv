@@ -6,7 +6,7 @@ interface HireMeProps {
     className?: string
 }
 
-const HireMe: FC<HireMeProps> = ({ className }) => {
+export const HireMe: FC<HireMeProps> = ({ className }) => {
     return (
         <div className={classNames(cls.HireMe, [className])}>
             <svg xmlns="http://www.w3.org/2000/svg" width="301" height="216" viewBox="0 0 301 216" fill="none">
@@ -17,5 +17,3 @@ const HireMe: FC<HireMeProps> = ({ className }) => {
         </div>
     )
 }
-
-export default HireMe
