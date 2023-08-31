@@ -1,0 +1,22 @@
+.Title {
+    opacity: 1;
+    color: var(--color-golden-fizz);
+    -webkit-text-stroke: 0.5rem var(--color-shocking-pink);
+    font-family: 'Monument Extended';
+    // font-family: var(--font-monument-extended);
+    font-size: 8rem;
+    font-style: normal;
+    font-weight: 400;
+    // line-height: normal;
+    // text-transform: capitalize;
+
+    span {
+        opacity: 0;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+        white-space: pre;
+      }
+}
+
