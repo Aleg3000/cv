@@ -1,0 +1,27 @@
+.ProjectNavigation {
+    display: flex;
+    align-items: center;
+    // gap: 3rem;
+    justify-content: space-between;
+    position: relative;
+    height: 8rem;
+
+    .arrow {
+        cursor: pointer;
+        width: 10rem;
+        height: 10rem;
+        opacity: 0;
+    }
+
+    .arrow:first-child {
+        // position: absolute;
+        // left: 0;
+        // transform: translateX(calc(-100% - 2rem))
+    }
+
+    .arrow:last-child {
+        // position: absolute;
+        // right: 0;
+        transform: rotateY(180deg);
+    }
+}
