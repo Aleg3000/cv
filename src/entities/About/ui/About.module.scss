@@ -1,4 +1,5 @@
 .About {
+    position: relative;
     width: 86rem;
     height: 15rem;
     border-radius: 50px;
@@ -33,19 +34,26 @@
     font-family: 'Comic Sans MS';
     color: var(--color-rose-bud-cherry);
     font-size: 2.1rem;
-    text-transform: capitalize;
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
     line-height: normal;
+    z-index: z('about');
 
     h2 {
         font-size: 4rem;
         font-style: normal;
+        text-transform: capitalize;
     }
 
     p {
         width: 37rem;
         font-style: italic;
+
+        // span span {
+        //     font-size: 2.1rem;
+        //     text-transform: capitalize;
+        //     line-height: normal;
+        // }
     }
 } 

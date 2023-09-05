@@ -1,0 +1,17 @@
+.Text {
+    span {
+        overflow: hidden;
+        display: inline-block;
+        white-space: pre;
+
+        span {
+            opacity: 0;
+            display: inline-block;
+            line-height: 1;
+            position: relative;
+            vertical-align: middle;
+            white-space: pre;
+            transform: translateY(100%);
+          }
+    }
+}

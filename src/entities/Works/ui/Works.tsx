@@ -1,17 +1,15 @@
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { type FC, type RefObject, useEffect, useLayoutEffect, useRef } from 'react'
+import { type FC, type RefObject, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { worksActions } from '../model'
-import { getIsWorksClosing, getIsWorksOpen, getIsWorksOpening } from '../model/selectors/getIsWorksOpen/getIsWorksOpen'
 import cls from './Works.module.scss'
 import gsap from 'gsap'
 import { aboutActions } from 'entities/About'
-import { getCurrentProject } from '../model/selectors/getCurrentProject/getCurrentProject'
-import { projectData } from '../data/data'
-import image from '../../../shared/assets/pictures/work1.png'
 import { Work } from 'widgets/Work'
+import { getWorks } from '../model/selectors/getWorks/getWorks'
+import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 
 interface WorksProps {
     className?: string
@@ -22,15 +20,14 @@ export const Works: FC<WorksProps> = ({ className }) => {
 
     const logo = useRef(null)
     const wrapper = useRef(null)
-    const work = useRef(null)
-    const text = useRef(null)
     const tl = useRef<GSAPTimeline>()
 
-    const isWorksOpened = useSelector(getIsWorksOpen)
-    const isWorksOpening = useSelector(getIsWorksOpening)
-    const isWorksClosing = useSelector(getIsWorksClosing)
-    const currentProject = useSelector(getCurrentProject)
-    const workDescription = projectData[currentProject].description
+    const {
+        isOpen: isWorksOpened,
+        isClosing: isWorksClosing,
+        isOpening: isWorksOpening
+    } = useSelector(getWorks)
+
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -45,7 +42,7 @@ export const Works: FC<WorksProps> = ({ className }) => {
         }
     }, [dispatch, isAboutOpened, isWorksOpened, isWorksOpening])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const ctx = gsap.context(() => {
             tl.current = gsap.timeline({
                 paused: true,
@@ -54,23 +51,21 @@ export const Works: FC<WorksProps> = ({ className }) => {
             })
             tl.current
                 .to(logo.current, {
-                    transform: 'translateX(0%)'
+                    transform: 'translateX(0%)',
+                    ease: 'back.out(3)',
+                    duration: 1
                 })
                 .to(wrapper.current, {
-                    width: '108rem'
-                })
-                .to(work.current, {
-                    opacity: 1
-                })
-                .to(text.current, {
-                    opacity: 1
-                })
+                    width: '108rem',
+                    duration: 1.7,
+                    ease: 'back.out(1.4)'
+                }, '>-0.1')
         }, wrapper)
 
         return () => { ctx.revert() }
     }, [dispatch])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (isWorksOpening) {
             if (isAboutOpened) {
                 dispatch(aboutActions.close())
@@ -88,9 +83,14 @@ export const Works: FC<WorksProps> = ({ className }) => {
     }
 
     return (
-        <div ref={wrapper} onClick={onClick} className={classNames(cls.Works, [className])}>
+        <div
+            ref={wrapper}
+            onClick={onClick}
+            className={classNames(cls.Works, [className])}
+            style={{ zIndex: getZIndex('works') }}
+        >
             <WorksLogo logoRef={logo} />
-            <Work image={image} text={text} wrapper={work} description={workDescription} />
+            <Work/>
             {isWorksOpened && <div onClick={() => { dispatch(worksActions.close()) }} className={cls.close}></div>}
         </div>
     )

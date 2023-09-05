@@ -1,7 +1,7 @@
 import { projectData } from 'entities/Works/data/data'
 import { worksActions } from 'entities/Works/model'
-import { getCurrentProject } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
-import { type ReactElement, type FC, useRef, useLayoutEffect } from 'react'
+import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
+import { type ReactElement, type FC, useRef, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -21,48 +21,48 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
     const isWorksClosing = useSelector(getIsWorksClosing)
     const title = useRef<HTMLHeadingElement>()
     const q = gsap.utils.selector(title)
+    const isProjectChanging = useSelector(getIsProjectChanging)
+    const [isNext, setIsNext] = useState<'next' | 'prev'>('next')
 
     const toNextProject = (e: React.MouseEvent<SVGSVGElement>): void => {
         e.stopPropagation()
-        gsap.to(q('.titleSpan'), {
-            duration: 1,
-            ease: 'power1.in',
-            opacity: 0,
-            stagger: 0.05,
-            onComplete: () => {
-                dispatch(worksActions.toNextProject())
-            }
-        })
+        dispatch(worksActions.setIsProjectChanging(true))
+        setIsNext('next')
     }
     const toPrevProject = (e: React.MouseEvent<SVGSVGElement>): void => {
         e.stopPropagation()
-        gsap.to(title.current, {
-            opacity: 0,
-            onComplete: () => {
-                dispatch(worksActions.toPrevProject())
-            }
-        })
+        dispatch(worksActions.setIsProjectChanging(true))
+        setIsNext('prev')
     }
 
-    useLayoutEffect(() => {
-        if (isWorksClosing) {
+    useEffect(() => {
+        // if (isWorksClosing) return
+        if (isProjectChanging || isWorksClosing) {
+            console.log('closing')
             gsap.to(q('.titleSpan'), {
-                duration: 1,
+                duration: 5,
                 ease: 'power1.in',
                 opacity: 0,
-                stagger: 0.05
+                stagger: 0.05,
+                onComplete: () => {
+                    dispatch(worksActions.setIsProjectChanging(false))
+                    if (isWorksClosing) return
+                    isNext === 'next'
+                        ? dispatch(worksActions.toNextProject())
+                        : dispatch(worksActions.toPrevProject())
+                }
             })
         }
-    }, [isWorksClosing, q])
+    }, [dispatch, isProjectChanging, isNext, q, isWorksClosing])
 
-    useLayoutEffect(() => {
-        if (isWorksClosing) return
+    useEffect(() => {
+        if (isProjectChanging || isWorksClosing) return
         gsap.to(q('.titleSpan'), {
             duration: 1,
             opacity: 1,
             stagger: 0.05
         })
-    }, [currentProject, isWorksClosing, q])
+    }, [q, isProjectChanging, isWorksClosing])
 
     return (
         <div className={classNames(cls.ProjectNavigation, [className])}>
@@ -82,11 +82,11 @@ const Arrow: FC<ArrowProps> = ({ arrowClassName, onClick }): ReactElement => {
     const arrow = useRef()
     const isWorksClosing = useSelector(getIsWorksClosing)
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         gsap.to(arrow.current, { opacity: 1, duration: 2, delay: 1 })
     }, [])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (isWorksClosing) gsap.to(arrow.current, { opacity: 0, duration: 1 })
     }, [isWorksClosing])
 

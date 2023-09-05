@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Flowers.module.scss'
 
 interface FlowersProps {
@@ -8,7 +9,7 @@ interface FlowersProps {
 
 export const Flowers: FC<FlowersProps> = ({ className }) => {
     return (
-        <div className={classNames(cls.Flowers, [className])}>
+        <div style={{ zIndex: getZIndex('flowers') }} className={classNames(cls.Flowers, [className])}>
             <FlowerOne />
             <FlowerTwo />
             <FlowerThree />

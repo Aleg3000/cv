@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Dude.module.scss'
 // import DudeLogo from 'shared/assets/icons/dude.svg'
 
@@ -9,7 +10,7 @@ interface DudeProps {
 
 export const Dude: FC<DudeProps> = ({ className }) => {
     return (
-        <div className={classNames(cls.Dude, [className])}>
+        <div style={{ zIndex: getZIndex('dude') }} className={classNames(cls.Dude, [className])}>
             <DudeLogo />
         </div>
     )
