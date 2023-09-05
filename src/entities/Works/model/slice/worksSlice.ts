@@ -7,6 +7,7 @@ const initialState: WorksSchema = {
     isOpening: false,
     isClosing: false,
     currentProject: 0,
+    isProjectChanging: false,
     projectsQuantity: projectData.length - 1
 }
 
@@ -30,6 +31,9 @@ export const worksSlice = createSlice({
         },
         toPrevProject: (state) => {
             state.currentProject = state.currentProject - 1 < 0 ? state.projectsQuantity : state.currentProject - 1
+        },
+        setIsProjectChanging: (state, action: PayloadAction<boolean>) => {
+            state.isProjectChanging = action.payload
         }
     }
 })
