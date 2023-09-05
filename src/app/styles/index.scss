@@ -1,8 +1,10 @@
 @import "reset";
 @import "variables/global";
 @import "utils/mixins";
+@import "utils/responsive";
 @import "utils/variables";
 @import "fonts";
+
 
 html {
     @extend %cover;

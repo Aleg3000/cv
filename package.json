@@ -43,6 +43,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "identity-obj-proxy": "^3.0.0",
+    "include-media": "^2.0.0",
     "mini-css-extract-plugin": "^2.7.6",
     "reg-cli": "^0.17.7",
     "sass": "^1.64.2",
