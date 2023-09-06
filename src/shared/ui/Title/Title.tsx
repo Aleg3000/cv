@@ -13,7 +13,7 @@ const Title = forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
 
     // const titleRef = ref as MutableRefObject<HTMLHeadingElement>
 
-    // useEffect(() => {
+    // useLayoutEffect(() => {
     //     gsap.to(titleRef.current, {
     //         opacity: 1,
     //         duration: 5

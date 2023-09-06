@@ -1,7 +1,7 @@
 import { projectData } from 'entities/Works/data/data'
 import { worksActions } from 'entities/Works/model'
 import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
-import { type ReactElement, type FC, useRef, useEffect, useState } from 'react'
+import { type ReactElement, type FC, useRef, useLayoutEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -35,7 +35,7 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
         setIsNext('prev')
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // if (isWorksClosing) return
         if (isProjectChanging || isWorksClosing) {
             console.log('closing')
@@ -55,7 +55,7 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
         }
     }, [dispatch, isProjectChanging, isNext, q, isWorksClosing])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isProjectChanging || isWorksClosing) return
         gsap.to(q('.titleSpan'), {
             duration: 1,
@@ -82,11 +82,11 @@ const Arrow: FC<ArrowProps> = ({ arrowClassName, onClick }): ReactElement => {
     const arrow = useRef()
     const isWorksClosing = useSelector(getIsWorksClosing)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.to(arrow.current, { opacity: 1, duration: 2, delay: 1 })
     }, [])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isWorksClosing) gsap.to(arrow.current, { opacity: 0, duration: 1 })
     }, [isWorksClosing])
 

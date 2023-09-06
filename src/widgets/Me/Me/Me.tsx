@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FC } from 'react'
+import { useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Me.module.scss'
 import avatar from 'shared/assets/pictures/me.png'
@@ -17,7 +17,7 @@ export const Me: FC<MeProps> = ({ className }) => {
     const tl = useRef<GSAPTimeline>()
     const wrapper = useRef(null)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             tl.current = gsap.timeline({
                 paused: true,
@@ -29,7 +29,7 @@ export const Me: FC<MeProps> = ({ className }) => {
         return () => { ctx.revert() }
     }, [])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isAboutOpening) tl.current.play()
         if (isAboutClosing) tl.current.reverse()
     }, [isAboutClosing, isAboutOpening])

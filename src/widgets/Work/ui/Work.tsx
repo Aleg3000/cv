@@ -1,6 +1,6 @@
 import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
 import { getIsWorksClosing, getIsWorksOpen } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
-import { type FC, useEffect, useRef } from 'react'
+import { type FC, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 // import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Work.module.scss'
@@ -27,7 +27,7 @@ export const Work: FC<WorkProps> = ({ className }) => {
     const wrapper = useRef(null)
     const q = gsap.utils.selector(text)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         console.log('preclosing')
         if (isWorksClosing) {
             console.log('closing')
@@ -38,7 +38,7 @@ export const Work: FC<WorkProps> = ({ className }) => {
         }
     }, [isWorksClosing, wrapper])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isWorksClosing || !isWorksOpened) return
         if (isProjectChanging) {
             gsap.to(wrapper.current, {

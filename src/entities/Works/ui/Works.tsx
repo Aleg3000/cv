@@ -1,5 +1,5 @@
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { type FC, type RefObject, useEffect, useRef } from 'react'
+import { type FC, type RefObject, useLayoutEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -30,7 +30,7 @@ export const Works: FC<WorksProps> = ({ className }) => {
 
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isAboutOpened) {
             gsap.to(logo.current, {
                 transform: 'translateX(0%)'
@@ -42,7 +42,7 @@ export const Works: FC<WorksProps> = ({ className }) => {
         }
     }, [dispatch, isAboutOpened, isWorksOpened, isWorksOpening])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             tl.current = gsap.timeline({
                 paused: true,
@@ -65,7 +65,7 @@ export const Works: FC<WorksProps> = ({ className }) => {
         return () => { ctx.revert() }
     }, [dispatch])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isWorksOpening) {
             if (isAboutOpened) {
                 dispatch(aboutActions.close())

@@ -1,5 +1,5 @@
 import SocialMedia from 'widgets/SocialMedia/SocialMedia'
-import { type FC, useRef, useEffect } from 'react'
+import { type FC, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -42,7 +42,7 @@ export const About: FC<AboutProps> = ({ className }) => {
         }
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             tl.current = gsap.timeline({
                 paused: true,
@@ -67,12 +67,12 @@ export const About: FC<AboutProps> = ({ className }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isAboutOpening) tl.current.play()
         if (isAboutClosing) tl.current.reverse()
     }, [isAboutOpening, isAboutClosing])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isWorksOpening) {
             gsap.to(q('.titleSpan'), {
                 duration: 1,
