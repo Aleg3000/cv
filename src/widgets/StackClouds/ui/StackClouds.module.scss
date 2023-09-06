@@ -1,0 +1,41 @@
+.StackClouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 21rem;
+    height: 10rem;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-family: 'Comic Sans MS';
+        font-size: 2.4rem;
+        font-weight: 400;
+        line-height: 3.3rem;
+        // letter-spacing: 0em;
+        text-align: center;
+        color: var(--color-blush-pink);
+        -webkit-text-stroke: 0.2rem var(--color-shocking-pink);
+    }
+}

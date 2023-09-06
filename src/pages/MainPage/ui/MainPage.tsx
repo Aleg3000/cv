@@ -7,6 +7,7 @@ import { Dude } from 'widgets/Dude'
 import { Flowers } from 'widgets/Flowers'
 import { HireMe } from 'widgets/HireMe'
 import { Me } from 'widgets/Me'
+import { StackClouds } from 'widgets/StackClouds'
 import cls from './MainPage.module.scss'
 
 interface MainPageProps {
@@ -19,6 +20,7 @@ const MainPage: FC<MainPageProps> = ({ className }) => {
             <Dude />
             <Me />
             <Flowers />
+            <StackClouds />
             <About />
             <Works />
             <HireMe />

@@ -5,6 +5,7 @@ const zIndexes: string[] = [
     'about',
     'works',
     'me',
+    'clouds',
     'hire-me'
 ]
 
