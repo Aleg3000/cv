@@ -2,6 +2,7 @@
   "name": "aleg3000-cv",
   "version": "1.0.0",
   "description": "",
+  "homepage" : "/cv", 
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env port=3000",
