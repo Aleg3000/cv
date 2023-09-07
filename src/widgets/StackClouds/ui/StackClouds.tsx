@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
 import { projectData } from 'entities/Works/data/data'
-import { getCurrentProject } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
+import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
 import { getIsWorksOpen } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
 import { useLayoutEffect, useRef, useState, type FC } from 'react'
 import { useSelector } from 'react-redux'
@@ -13,13 +14,14 @@ interface StackCloudsProps {
     className?: string
 }
 
-const fullStack = ['react', 'js', 'redux', 'three.js', 'css', 'scss', 'html']
+const fullStack = ['react', 'js', 'redux', 'three.js', 'css', 'scss', 'html', 'git', 'storybook']
 
 export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
     const currentProject = useSelector(getCurrentProject)
     const isWorksOpened = useSelector(getIsWorksOpen)
     const isAboutOpened = useSelector(getIsAboutOpen)
     const clouds = useRef(null)
+    const isProjectChanging = useSelector(getIsProjectChanging)
     const q = gsap.utils.selector(clouds)
 
     const [stack, setStack] = useState<string[]>([])
@@ -31,7 +33,8 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
         if (isWorksOpened) {
             setStack(projectData[currentProject].stack)
         }
-        if (!isAboutOpened && !isWorksOpened && stack.length) {
+        // eslint-disable-next-line no-mixed-operators
+        if (isProjectChanging || !isAboutOpened && !isWorksOpened && stack.length) {
             console.log('233423332')
             gsap.to(q('.cloud'), {
                 y: '-20rem',
@@ -41,13 +44,7 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
                 onComplete: () => { setStack([]) }
             })
         }
-    }, [isAboutOpened, isWorksOpened, currentProject])
-
-    useLayoutEffect(() => {
-        if (stack.length) {
-            console.log(stack)
-        }
-    }, [stack])
+    }, [isAboutOpened, isWorksOpened, currentProject, isProjectChanging])
 
     return (
         <div ref={clouds} style={{ zIndex: getZIndex('clouds') }} className={classNames(cls.StackClouds, [className])}>
@@ -58,22 +55,34 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
 
 const Cloud = ({ name, index, q }: { name: string, index: number, q: number }) => {
     const cloud = useRef(null)
-    const height = window.innerHeight * 0.2 * Math.random()
-    // const left = gsap.utils.random(0, window.innerWidth)
+    const height = window.innerHeight * 0.2 * Math.random() // 0.2 how low from the top of screen clouds will be
+    let width: number = document.documentElement.clientWidth * 0.9
 
-    const left = (document.documentElement.clientWidth / q) * index
-    // console.log(height)
-    // console.log(left)
-    console.log(document.documentElement.clientWidth - left)
+    const left = (width / q) * index
+
+    const direction = Math.random() > 0.5 ? 'right' : 'left'
 
     useLayoutEffect(() => {
-        gsap.fromTo(cloud.current, { y: '-10rem', x: `${left}px` }, { y: `${height}px`, delay: 0.1 * index, ease: 'elastic.out(1.2, 0.4)', duration: 1.5 })
-        // gsap.timeline({ delay: 2, yoyo: true }).to(cloud.current, {
-        //     x: `${document.documentElement.clientWidth - left}px`, duration: 10
-        // }).to(cloud.current, {
-        //     x: `${-left}px`,
-        //     duration: 10
-        // })
+        width = document.documentElement.clientWidth - cloud.current.getBoundingClientRect().width
+        gsap.fromTo(cloud.current,
+            { y: '-10rem', left: `${left + cloud.current.getBoundingClientRect().width / 4}px` },
+            {
+                y: `${height}px`,
+                delay: 0.1 * index,
+                ease: 'elastic.out(1.2, 0.4)',
+                duration: 1.5
+            })
+        gsap.timeline({ delay: 2, yoyo: true, repeat: -1 })
+            .to(cloud.current, {
+                left: direction === 'left' ? '0px' : `${width}px`,
+                duration: 5 + Math.random() * 5,
+                ease: 'none'
+            })
+            .to(cloud.current, {
+                left: direction === 'left' ? `${width}px` : '0px',
+                duration: 5 + Math.random() * 5,
+                ease: 'none'
+            })
     }, [])
 
     return (
