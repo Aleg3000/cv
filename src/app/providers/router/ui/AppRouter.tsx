@@ -1,11 +1,17 @@
 import { Suspense, type ReactElement } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { routerConfig } from 'shared/config/routerConfig/routerConfig'
+import { routerConfig, routerConfigMobile } from 'shared/config/routerConfig/routerConfig'
+import { useMatchMedia } from 'shared/lib/hooks/useMatchMedia/useMatchMedia'
 
 function AppRouter (): ReactElement {
+    const { isMobile } = useMatchMedia()
+
+    console.log(isMobile)
+
+    const currentRouterConfig = isMobile ? routerConfigMobile : routerConfig
     return (
         <Routes>
-            {Object.values(routerConfig).map(({ path, element }) => <Route
+            {Object.values(currentRouterConfig).map(({ path, element }) => <Route
                 key={path}
                 path={path}
                 element={
