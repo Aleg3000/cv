@@ -1,7 +1,6 @@
 {
   "name": "aleg3000-cv",
   "version": "1.0.0",
-  "homepage": "cv",
   "description": "",
   "main": "index.js",
   "scripts": {
