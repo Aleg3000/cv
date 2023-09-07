@@ -1,4 +1,5 @@
 import { type FC } from 'react'
+import { Link } from 'react-router-dom'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './NotFoundPage.module.scss'
 
@@ -9,7 +10,8 @@ interface NotFoundPageProps {
 const NotFoundPage: FC<NotFoundPageProps> = ({ className }) => {
     return (
         <div className={classNames(cls.NotFoundPage, [className])}>
-            {'Страница не найдена'}
+            {'Page not found'}
+            <Link to={'/'}>To main page</Link>
         </div>
     )
 }
