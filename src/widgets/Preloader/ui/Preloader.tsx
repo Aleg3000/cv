@@ -36,6 +36,7 @@ export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
                 duration: 1.3,
                 onComplete: () => { onPreloaded(true) }
             })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div ref={a} style={{ zIndex: getZIndex('preloader') }} className={classNames(cls.Preloader, [className])}>

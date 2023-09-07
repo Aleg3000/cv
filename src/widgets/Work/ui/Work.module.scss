@@ -21,6 +21,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+
     // background-image: url('../../../shared/assets/pictures/work1.png');
     object-fit: cover;
     background-size: cover;
@@ -37,10 +38,10 @@
     transform: translate((-50%, -50%));
     z-index: 10;
     width: 35rem;
+
     // height: 23.5rem;
     flex-shrink: 0;
     color: var(--color-chartreuse);
-
     text-align: center;
     font-family: 'Monument Extended';
     font-size: 2.2rem;
