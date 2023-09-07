@@ -13,7 +13,7 @@ document.body.innerHTML = '<div id="app"></div>'
 const root = createRoot(document.getElementById('app'))
 root.render(
     <StoreProvider>
-        <BrowserRouter basename='/cv'>
+        <BrowserRouter basename={__BASENAME__}>
             <ErrorBoundary fallback={<PageError />}>
                 <ThemeProvider>
                     <App />
