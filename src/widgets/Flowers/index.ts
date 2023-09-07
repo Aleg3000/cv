@@ -1,1 +1,1 @@
-export { Flowers } from './Flowers/Flowers'
+export { Flowers } from './ui/Flowers'

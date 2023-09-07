@@ -1,4 +1,3 @@
-import SocialMedia from 'widgets/SocialMedia/SocialMedia'
 import { type FC, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -11,6 +10,7 @@ import { getIsWorksOpen, getIsWorksOpening } from 'entities/Works/model/selector
 import Title from 'shared/ui/Title/Title'
 import { ProjectNavigation } from 'widgets/ProjectNavigation'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { SocialMedia } from 'widgets/SocialMedia'
 // import Paragraph from 'shared/ui/Paragraph/Paragraph'
 
 interface AboutProps {

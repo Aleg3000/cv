@@ -6,7 +6,7 @@ interface SocialMediaProps {
     className?: string
 }
 
-const SocialMedia: FC<SocialMediaProps> = ({ className }) => {
+export const SocialMedia: FC<SocialMediaProps> = ({ className }) => {
     return (
         <div className={classNames(cls.SocialMedia, [className])}>
             <Instagram />
@@ -15,8 +15,6 @@ const SocialMedia: FC<SocialMediaProps> = ({ className }) => {
         </div>
     )
 }
-
-export default SocialMedia
 
 const Instagram = () => {
     return (

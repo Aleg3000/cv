@@ -1,1 +1,1 @@
-export { Dude } from './Dude/Dude'
+export { Dude } from './ui/Dude'
