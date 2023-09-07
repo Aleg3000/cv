@@ -1,12 +1,10 @@
 {
   "name": "aleg3000-cv",
   "version": "1.0.0",
-  "repository": {
-    "url": "git+https://github.com/Aleg3000/cv.git"
-  },
   "homepage": "https://aleg3000.github.io/cv",
   "description": "",
   "main": "index.js",
+  "gh-pages:404": "cp build/index.html build/404.html",
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
