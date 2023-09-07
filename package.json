@@ -4,7 +4,6 @@
   "homepage": "https://aleg3000.github.io/cv",
   "description": "",
   "main": "index.js",
-  "gh-pages:404": "cp build/index.html build/404.html",
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack --env mode=production",
@@ -14,7 +13,8 @@
     "lint:scss": "npx stylelint '**/*.scss'",
     "lint:scss:fix": "npx stylelint '**/*.scss' --fix",
     "predeploy": "npm run build:prod",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "gh-pages:404": "cp build/index.html build/404.html"
   },
   "keywords": [],
   "author": "",
