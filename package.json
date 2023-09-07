@@ -1,7 +1,7 @@
 {
   "name": "aleg3000-cv",
   "version": "1.0.0",
-  "homepage": "https://aleg3000.github.io/cv",
+  "homepage": "cv",
   "description": "",
   "main": "index.js",
   "scripts": {
