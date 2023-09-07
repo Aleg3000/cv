@@ -27,4 +27,6 @@ jobs:
         if: always()
       - name: linting css
         run: npm run lint:scss
+      - name: deploy
+        run: gh-pages -d build
 

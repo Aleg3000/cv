@@ -1,6 +1,10 @@
 {
   "name": "aleg3000-cv",
   "version": "1.0.0",
+  "repository": {
+    "url": "git+https://github.com/Aleg3000/cv.git"
+  },
+  "homepage": "https://aleg3000.github.io/cv",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +14,9 @@
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint '**/*.scss'",
-    "lint:scss:fix": "npx stylelint '**/*.scss' --fix"
+    "lint:scss:fix": "npx stylelint '**/*.scss' --fix",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -41,6 +47,7 @@
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "^5.5.3",
     "identity-obj-proxy": "^3.0.0",
     "include-media": "^2.0.0",
