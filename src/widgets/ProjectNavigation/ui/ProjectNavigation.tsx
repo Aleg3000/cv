@@ -38,9 +38,8 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
     useLayoutEffect(() => {
         // if (isWorksClosing) return
         if (isProjectChanging || isWorksClosing) {
-            console.log('closing')
             gsap.to(q('.titleSpan'), {
-                duration: 5,
+                duration: 2,
                 ease: 'power1.in',
                 opacity: 0,
                 stagger: 0.05,

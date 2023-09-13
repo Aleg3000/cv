@@ -1,5 +1,5 @@
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { type FC, type RefObject, useLayoutEffect, useRef } from 'react'
+import { type FC, type RefObject, useLayoutEffect, useRef, forwardRef } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -18,7 +18,7 @@ interface WorksProps {
 export const Works: FC<WorksProps> = ({ className }) => {
     const isAboutOpened = useSelector(getIsAboutOpen)
 
-    const logo = useRef(null)
+    const logo = useRef<SVGSVGElement>()
     const wrapper = useRef(null)
     const tl = useRef<GSAPTimeline>()
 
@@ -89,16 +89,16 @@ export const Works: FC<WorksProps> = ({ className }) => {
             className={classNames(cls.Works, [className])}
             style={{ zIndex: getZIndex('works') }}
         >
-            <WorksLogo logoRef={logo} />
+            <WorksLogo ref={logo} />
             <Work/>
             {isWorksOpened && <div onClick={() => { dispatch(worksActions.close()) }} className={cls.close}></div>}
         </div>
     )
 }
 
-const WorksLogo = ({ logoRef }: { logoRef: RefObject<SVGSVGElement> }) => {
+const WorksLogo = forwardRef<SVGSVGElement>((_, ref) => {
     return (
-        <svg ref={logoRef} className={cls.logo} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293 483" fill="none">
+        <svg ref={ref} className={cls.logo} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 293 483" fill="none">
             <g filter="url(#filter0_d_99_107)">
                 <path d="M6 5H24.2335L27.9837 310.443H28.2423L34.8374 5H54.6227L59.7953 310.443H60.054L64.7093 5H82.9429L70.1406 470.686H49.1915L42.9843 145.622H42.7257L35.7426 470.686H15.3107L6 5Z" fill="white"/>
                 <path d="M86.8981 394.816V80.8703C86.8981 18.7351 97.114 5 108.365 5C119.615 5 129.831 18.7351 129.831 80.8703V394.816C129.831 456.951 119.615 470.686 108.365 470.686C97.114 470.686 86.8981 456.951 86.8981 394.816ZM111.597 379.773V95.9135C111.597 82.8324 111.209 65.173 108.365 65.173C105.52 65.173 105.132 82.8324 105.132 95.9135V379.773C105.132 392.854 105.52 410.513 108.365 410.513C111.209 410.513 111.597 392.854 111.597 379.773Z" fill="white"/>
@@ -120,4 +120,4 @@ const WorksLogo = ({ logoRef }: { logoRef: RefObject<SVGSVGElement> }) => {
             </defs>
         </svg>
     )
-}
+})

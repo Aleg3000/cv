@@ -34,7 +34,6 @@ export const About: FC<AboutProps> = ({ className }) => {
     // const a = gsap.utils.selector(description)
 
     const onClick = (): void => {
-        console.log('hi')
         if (isAboutOpened) {
             dispatch(aboutActions.close())
         } else if (!isWorksOpen) {
@@ -52,6 +51,10 @@ export const About: FC<AboutProps> = ({ className }) => {
             tl.current.to(wrapper.current, { height: '68rem' })
                 .to(description.current, {
                     opacity: 1
+                })
+                .to(q('svg'), {
+                    opacity: 1,
+                    stagger: 0.5
                 })
                 // .to(q('.paragraphSpan'), {
                 //     duration: 1,
