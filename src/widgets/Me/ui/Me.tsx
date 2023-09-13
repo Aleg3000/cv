@@ -22,8 +22,7 @@ export const Me: FC<MeProps> = ({ className }) => {
             tl.current = gsap.timeline({
                 paused: true,
                 delay: 2
-            })
-            tl.current.to(wrapper.current, { left: '51rem', rotate: 720, duration: 2 })
+            }).to(wrapper.current, { left: '51rem', rotate: 720, duration: 2 })
         }, wrapper)
 
         return () => { ctx.revert() }
