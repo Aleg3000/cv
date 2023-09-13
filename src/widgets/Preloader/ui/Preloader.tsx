@@ -30,10 +30,22 @@ export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
                     scale: 1,
                     ease: 'back.out(3)'
                 })
+                .to(['path'], {
+                    opacity: 0,
+                    y: -100,
+                    scale: 0.5,
+                    stagger: 0.1,
+                    duration: 1.5
+                })
+                .to('img', {
+                    opacity: 0,
+                    y: -100,
+                    scale: 0.3,
+                })
             .to(a.current, {
-                delay: 0.7,
-                y: '-100%',
-                duration: 1.3,
+                // delay: 0.7,
+                opacity: 0,
+                duration: 1,
                 onComplete: () => { onPreloaded(true) }
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps

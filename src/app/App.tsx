@@ -12,9 +12,10 @@ export const App = (): ReactElement => {
     return (
         <div className={classNames('app', [theme])}>
             <Suspense>
-                {isPreloaded
-                    ? <AppRouter />
-                    : <Preloader onPreloaded={setIsPreloaded} />
+                {
+                    isPreloaded
+                        ? <AppRouter />
+                        : <Preloader onPreloaded={setIsPreloaded} />
                 }
             </Suspense>
         </div>
