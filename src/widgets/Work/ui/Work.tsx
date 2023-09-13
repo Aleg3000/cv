@@ -11,10 +11,6 @@ import Paragraph from 'shared/ui/Paragraph/Paragraph'
 
 interface WorkProps {
     className?: string
-    // image: string
-    // description: string
-    // text: MutableRefObject<HTMLDivElement>
-    // wrapper: MutableRefObject<HTMLDivElement>
 }
 
 export const Work: FC<WorkProps> = ({ className }) => {
@@ -28,9 +24,7 @@ export const Work: FC<WorkProps> = ({ className }) => {
     const q = gsap.utils.selector(text)
 
     useLayoutEffect(() => {
-        console.log('preclosing')
         if (isWorksClosing) {
-            console.log('closing')
             gsap.to(wrapper.current, {
                 opacity: 0,
                 duration: 0.5
@@ -48,20 +42,17 @@ export const Work: FC<WorkProps> = ({ className }) => {
             })
             gsap.to(q('.paragraphSpan'), {
                 duration: 0.5,
-                // ease: 'power1.in',
                 opacity: 0,
                 stagger: 0.03,
                 transform: 'translateY(100%)'
             })
         } else {
-            console.log('vsdfberfb')
             gsap.to(wrapper.current, {
                 duration: 1,
                 opacity: 1
             })
             gsap.to(q('.paragraphSpan'), {
                 duration: 0.5,
-                // ease: 'power1.in',
                 delay: 1,
                 opacity: 1,
                 stagger: 0.03,
