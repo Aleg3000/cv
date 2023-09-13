@@ -1,15 +1,30 @@
-import { type FC } from 'react'
+import { useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Flowers.module.scss'
+import gsap from 'gsap'
 
 interface FlowersProps {
     className?: string
 }
 
 export const Flowers: FC<FlowersProps> = ({ className }) => {
+
+    const tl = useRef<GSAPTimeline>()
+    const wrapper = useRef()
+    const a = gsap.utils.selector(wrapper)
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            tl.current = gsap.timeline({ repeat: -1 })
+            tl.current.to(a('svg'), { rotate: 360, duration: 5, ease: 'none' })
+
+        }, wrapper)
+
+        return () => { ctx.revert() }
+    })
     return (
-        <div style={{ zIndex: getZIndex('flowers') }} className={classNames(cls.Flowers, [className])}>
+        <div ref={wrapper} style={{ zIndex: getZIndex('flowers') }} className={classNames(cls.Flowers, [className])}>
             <FlowerOne />
             <FlowerTwo />
             <FlowerThree />
