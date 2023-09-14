@@ -58,6 +58,6 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
-        __BASENAME__: '/',
+        // __BASENAME__: '/',
     },
 }

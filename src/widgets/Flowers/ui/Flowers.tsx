@@ -9,7 +9,6 @@ interface FlowersProps {
 }
 
 export const Flowers: FC<FlowersProps> = ({ className }) => {
-
     const tl = useRef<GSAPTimeline>()
     const wrapper = useRef()
     const a = gsap.utils.selector(wrapper)
@@ -18,7 +17,6 @@ export const Flowers: FC<FlowersProps> = ({ className }) => {
         const ctx = gsap.context(() => {
             tl.current = gsap.timeline({ repeat: -1 })
             tl.current.to(a('svg'), { rotate: 360, duration: 5, ease: 'none' })
-
         }, wrapper)
 
         return () => { ctx.revert() }

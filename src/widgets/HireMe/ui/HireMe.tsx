@@ -17,12 +17,11 @@ export const HireMe: FC<HireMeProps> = ({ className }) => {
             tl.current = gsap.timeline({ repeat: -1, yoyo: true, paused: true })
             tl.current.to(wrapper.current, {
                 keyframes: [
-                    {rotate: -5},
-                    {rotate: 5} 
+                    { rotate: -5 },
+                    { rotate: 5 }
                 ],
                 ease: 'none'
             })
-
         }, wrapper)
 
         return () => { ctx.revert() }

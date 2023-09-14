@@ -1,5 +1,5 @@
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { type FC, type RefObject, useLayoutEffect, useRef, forwardRef } from 'react'
+import { type FC, useLayoutEffect, useRef, forwardRef } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
