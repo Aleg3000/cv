@@ -9,6 +9,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './StackClouds.module.scss'
 import gsap from 'gsap'
+import { getTime } from 'shared/lib/getTime/getTime'
 
 interface StackCloudsProps {
     className?: string
@@ -35,7 +36,6 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
         }
         // eslint-disable-next-line no-mixed-operators
         if (isProjectChanging || !isAboutOpened && !isWorksOpened && stack.length) {
-            console.log('233423332')
             gsap.to(q('.cloud'), {
                 y: '-20rem',
                 duration: 0.5,
@@ -56,33 +56,43 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
 const Cloud = ({ name, index, q }: { name: string, index: number, q: number }) => {
     const cloud = useRef(null)
     const height = window.innerHeight * 0.2 * Math.random() // 0.2 how low from the top of screen clouds will be
-    let width: number = document.documentElement.clientWidth * 0.9
-
-    const left = (width / q) * index
-
-    const direction = Math.random() > 0.5 ? 'right' : 'left'
 
     useLayoutEffect(() => {
-        width = document.documentElement.clientWidth - cloud.current.getBoundingClientRect().width
+        const cloudWidth = cloud.current.getBoundingClientRect().width
+        const width = document.documentElement.clientWidth - cloudWidth
+
+        const direction = Math.random() > 0.5 ? 'right' : 'left'
+        const leftPos = (width / (q - 1)) * index
+        const fullTime = 7.5 + Math.random() * 7.5
+        const time = getTime(leftPos, document.documentElement.clientWidth, cloudWidth, direction, fullTime)
+
         gsap.fromTo(cloud.current,
-            { y: '-10rem', left: `${left + cloud.current.getBoundingClientRect().width / 4}px` },
+            { y: '-10rem', left: `${leftPos}px` },
             {
                 y: `${height}px`,
                 delay: 0.1 * index,
                 ease: 'elastic.out(1.2, 0.4)',
                 duration: 1.5
             })
-        gsap.timeline({ delay: 2, yoyo: true, repeat: -1 })
-            .to(cloud.current, {
-                left: direction === 'left' ? '0px' : `${width}px`,
-                duration: 5 + Math.random() * 5,
-                ease: 'none'
-            })
-            .to(cloud.current, {
-                left: direction === 'left' ? `${width}px` : '0px',
-                duration: 5 + Math.random() * 5,
-                ease: 'none'
-            })
+
+        gsap.to(cloud.current, {
+            delay: 2,
+            keyframes: [
+                {
+                    repeat: 0,
+                    left: direction === 'left' ? '0px' : `${width}px`,
+                    duration: time,
+                    ease: 'none'
+                },
+                {
+                    repeat: -1,
+                    yoyo: true,
+                    left: direction === 'left' ? `${width}px` : '0px',
+                    duration: fullTime,
+                    ease: 'none'
+                }
+            ]
+        })
     }, [])
 
     return (

@@ -81,15 +81,13 @@ export const About: FC<AboutProps> = ({ className }) => {
                 duration: 1,
                 ease: 'power1.in',
                 opacity: 0,
-                stagger: 0.05,
-                onComplete: () => { console.log('start anim') }
+                stagger: 0.05
             })
         } else if (!isWorksOpen) {
             gsap.to(q('.titleSpan'), {
                 duration: 1,
                 opacity: 1,
-                stagger: 0.05,
-                onComplete: () => { console.log('end anim') }
+                stagger: 0.05
             })
         }
     }, [isWorksOpening, isWorksOpen, q])

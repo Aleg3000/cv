@@ -6,8 +6,6 @@ import { useMatchMedia } from 'shared/lib/hooks/useMatchMedia/useMatchMedia'
 function AppRouter (): ReactElement {
     const { isMobile } = useMatchMedia()
 
-    console.log(isMobile)
-
     const currentRouterConfig = isMobile ? routerConfigMobile : routerConfig
     return (
         <Routes>
