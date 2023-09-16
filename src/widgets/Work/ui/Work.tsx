@@ -8,12 +8,13 @@ import gsap from 'gsap'
 import { projectData } from 'entities/Works/data/data'
 import image from '../../../shared/assets/pictures/work1.png'
 import Paragraph from 'shared/ui/Paragraph/Paragraph'
+import { typedMemo } from 'app/types/memo'
 
 interface WorkProps {
     className?: string
 }
 
-export const Work: FC<WorkProps> = ({ className }) => {
+export const Work: FC<WorkProps> = typedMemo(() => {
     const isProjectChanging = useSelector(getIsProjectChanging)
     const isWorksClosing = useSelector(getIsWorksClosing)
     const isWorksOpened = useSelector(getIsWorksOpen)
@@ -71,4 +72,4 @@ export const Work: FC<WorkProps> = ({ className }) => {
             </div>
         </div>
     )
-}
+})

@@ -11,13 +11,14 @@ import Title from 'shared/ui/Title/Title'
 import { ProjectNavigation } from 'widgets/ProjectNavigation'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import { SocialMedia } from 'widgets/SocialMedia'
+import { typedMemo } from 'app/types/memo'
 // import Paragraph from 'shared/ui/Paragraph/Paragraph'
 
 interface AboutProps {
     className?: string
 }
 
-export const About: FC<AboutProps> = ({ className }) => {
+export const About: FC<AboutProps> = typedMemo(({ className }) => {
     const dispatch = useAppDispatch()
     const isAboutOpened = useSelector(getIsAboutOpen)
     const isAboutOpening = useSelector(getIsAboutOpening)
@@ -116,4 +117,4 @@ export const About: FC<AboutProps> = ({ className }) => {
             <SocialMedia />
         </div>
     )
-}
+})

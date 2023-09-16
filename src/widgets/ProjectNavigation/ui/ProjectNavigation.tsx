@@ -1,7 +1,7 @@
 import { projectData } from 'entities/Works/data/data'
 import { worksActions } from 'entities/Works/model'
 import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
-import { type ReactElement, type FC, useRef, useLayoutEffect, useState } from 'react'
+import { type ReactElement, type FC, useRef, useLayoutEffect, useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -9,12 +9,13 @@ import Title from 'shared/ui/Title/Title'
 import cls from './ProjectNavigation.module.scss'
 import gsap from 'gsap'
 import { getIsWorksClosing } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
+import { typedMemo } from 'app/types/memo'
 
 interface ProjectNavigationProps {
     className?: string
 }
 
-export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => {
+export const ProjectNavigation: FC<ProjectNavigationProps> = typedMemo(({ className }) => {
     const dispatch = useAppDispatch()
     const currentProject = useSelector(getCurrentProject)
     const currentTitle = projectData[currentProject].title
@@ -24,19 +25,19 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
     const isProjectChanging = useSelector(getIsProjectChanging)
     const [isNext, setIsNext] = useState<'next' | 'prev'>('next')
 
-    const toNextProject = (e: React.MouseEvent<SVGSVGElement>): void => {
+    const toNextProject = useCallback((e: React.MouseEvent<SVGSVGElement>): void => {
         e.stopPropagation()
         dispatch(worksActions.setIsProjectChanging(true))
         setIsNext('next')
-    }
-    const toPrevProject = (e: React.MouseEvent<SVGSVGElement>): void => {
+    }, [dispatch])
+
+    const toPrevProject = useCallback((e: React.MouseEvent<SVGSVGElement>): void => {
         e.stopPropagation()
         dispatch(worksActions.setIsProjectChanging(true))
         setIsNext('prev')
-    }
+    }, [dispatch])
 
     useLayoutEffect(() => {
-        // if (isWorksClosing) return
         if (isProjectChanging || isWorksClosing) {
             gsap.to(q('.titleSpan'), {
                 duration: 2,
@@ -70,14 +71,14 @@ export const ProjectNavigation: FC<ProjectNavigationProps> = ({ className }) => 
             <Arrow onClick={toNextProject} arrowClassName={cls.arrow}/>
         </div>
     )
-}
+})
 
 interface ArrowProps {
     arrowClassName: string
     onClick: (e: React.MouseEvent<SVGSVGElement>) => void
 }
 
-const Arrow: FC<ArrowProps> = ({ arrowClassName, onClick }): ReactElement => {
+const Arrow: FC<ArrowProps> = typedMemo(({ arrowClassName, onClick }): ReactElement => {
     const arrow = useRef()
     const isWorksClosing = useSelector(getIsWorksClosing)
 
@@ -101,4 +102,4 @@ const Arrow: FC<ArrowProps> = ({ arrowClassName, onClick }): ReactElement => {
             </g>
         </svg>
     )
-}
+})

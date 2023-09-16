@@ -3,12 +3,13 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './HireMe.module.scss'
 import gsap from 'gsap'
+import { typedMemo } from 'app/types/memo'
 
 interface HireMeProps {
     className?: string
 }
 
-export const HireMe: FC<HireMeProps> = ({ className }) => {
+export const HireMe: FC<HireMeProps> = typedMemo(({ className }) => {
     const wrapper = useRef()
     const tl = useRef<GSAPTimeline>()
 
@@ -42,4 +43,4 @@ export const HireMe: FC<HireMeProps> = ({ className }) => {
             <span>hire me</span>
         </div>
     )
-}
+})

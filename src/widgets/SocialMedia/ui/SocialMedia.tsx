@@ -1,3 +1,4 @@
+import { typedMemo } from 'app/types/memo'
 import { type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './SocialMedia.module.scss'
@@ -6,7 +7,7 @@ interface SocialMediaProps {
     className?: string
 }
 
-export const SocialMedia: FC<SocialMediaProps> = ({ className }) => {
+export const SocialMedia: FC<SocialMediaProps> = typedMemo(({ className }) => {
     return (
         <div className={classNames(cls.SocialMedia, [className])}>
             <Instagram />
@@ -14,9 +15,9 @@ export const SocialMedia: FC<SocialMediaProps> = ({ className }) => {
             <Mail />
         </div>
     )
-}
+})
 
-const Instagram = () => {
+const Instagram = typedMemo(() => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
             <mask id="mask0_31_284" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="50" height="50">
@@ -27,9 +28,9 @@ const Instagram = () => {
             </g>
         </svg>
     )
-}
+})
 
-const Telegram = () => {
+const Telegram = typedMemo(() => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
             <mask id="mask0_31_287" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="50" height="50">
@@ -40,9 +41,9 @@ const Telegram = () => {
             </g>
         </svg>
     )
-}
+})
 
-const Mail = () => {
+const Mail = typedMemo(() => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
             <mask id="mask0_31_290" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="50" height="50">
@@ -53,4 +54,4 @@ const Mail = () => {
             </g>
         </svg>
     )
-}
+})

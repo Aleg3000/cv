@@ -10,6 +10,7 @@ import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './StackClouds.module.scss'
 import gsap from 'gsap'
 import { getTime } from 'shared/lib/getTime/getTime'
+import { typedMemo } from 'app/types/memo'
 
 interface StackCloudsProps {
     className?: string
@@ -17,7 +18,7 @@ interface StackCloudsProps {
 
 const fullStack = ['react', 'js', 'redux', 'three.js', 'css', 'scss', 'html', 'git', 'storybook']
 
-export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
+export const StackClouds: FC<StackCloudsProps> = typedMemo(({ className }) => {
     const currentProject = useSelector(getCurrentProject)
     const isWorksOpened = useSelector(getIsWorksOpen)
     const isAboutOpened = useSelector(getIsAboutOpen)
@@ -51,9 +52,9 @@ export const StackClouds: FC<StackCloudsProps> = ({ className }) => {
             {stack.map((stack, key, arr) => <Cloud q={arr.length} key={stack} index={key} name={stack}/>)}
         </div>
     )
-}
+})
 
-const Cloud = ({ name, index, q }: { name: string, index: number, q: number }) => {
+const Cloud = typedMemo(({ name, index, q }: { name: string, index: number, q: number }) => {
     const cloud = useRef(null)
     const height = window.innerHeight * 0.2 * Math.random() // 0.2 how low from the top of screen clouds will be
 
@@ -109,4 +110,4 @@ const Cloud = ({ name, index, q }: { name: string, index: number, q: number }) =
             <p>{name}</p>
         </div>
     )
-}
+})

@@ -1,3 +1,4 @@
+import { typedMemo } from 'app/types/memo'
 import { forwardRef } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Title.module.scss'
@@ -29,4 +30,4 @@ const Title = forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
     )
 })
 
-export default Title
+export default typedMemo(Title)

@@ -1,3 +1,4 @@
+import { typedMemo } from 'app/types/memo'
 import { createElement, type FC } from 'react'
 import cls from './Paragraph.module.scss'
 
@@ -6,7 +7,7 @@ interface TextProps {
     text: string
 }
 
-const Paragraph: FC<TextProps> = ({ className, text }) => {
+const Paragraph: FC<TextProps> = typedMemo(({ text }) => {
     return (
         <div className={cls.Text}>
             {text.split(' ').map((letter, index) => {
@@ -22,6 +23,6 @@ const Paragraph: FC<TextProps> = ({ className, text }) => {
             })}
         </div>
     )
-}
+})
 
 export default Paragraph

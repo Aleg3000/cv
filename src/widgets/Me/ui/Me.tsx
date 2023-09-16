@@ -6,12 +6,13 @@ import { useSelector } from 'react-redux'
 import { getIsAboutClosing, getIsAboutOpening } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
 import gsap from 'gsap'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { typedMemo } from 'app/types/memo'
 
 interface MeProps {
     className?: string
 }
 
-export const Me: FC<MeProps> = ({ className }) => {
+export const Me: FC<MeProps> = typedMemo(({ className }) => {
     const isAboutOpening = useSelector(getIsAboutOpening)
     const isAboutClosing = useSelector(getIsAboutClosing)
     const tl = useRef<GSAPTimeline>()
@@ -40,4 +41,4 @@ export const Me: FC<MeProps> = ({ className }) => {
             </figure>
         </div>
     )
-}
+})

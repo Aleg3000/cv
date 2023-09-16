@@ -10,12 +10,13 @@ import { aboutActions } from 'entities/About'
 import { Work } from 'widgets/Work'
 import { getWorks } from '../model/selectors/getWorks/getWorks'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { typedMemo } from 'app/types/memo'
 
 interface WorksProps {
     className?: string
 }
 
-export const Works: FC<WorksProps> = ({ className }) => {
+export const Works: FC<WorksProps> = typedMemo(({ className }) => {
     const isAboutOpened = useSelector(getIsAboutOpen)
 
     const logo = useRef<SVGSVGElement>()
@@ -94,7 +95,7 @@ export const Works: FC<WorksProps> = ({ className }) => {
             {isWorksOpened && <div onClick={() => { dispatch(worksActions.close()) }} className={cls.close}></div>}
         </div>
     )
-}
+})
 
 const WorksLogo = forwardRef<SVGSVGElement>((_, ref) => {
     return (

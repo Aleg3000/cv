@@ -3,12 +3,13 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Flowers.module.scss'
 import gsap from 'gsap'
+import { typedMemo } from 'app/types/memo'
 
 interface FlowersProps {
     className?: string
 }
 
-export const Flowers: FC<FlowersProps> = ({ className }) => {
+export const Flowers: FC<FlowersProps> = typedMemo(({ className }) => {
     const tl = useRef<GSAPTimeline>()
     const wrapper = useRef()
     const a = gsap.utils.selector(wrapper)
@@ -28,7 +29,7 @@ export const Flowers: FC<FlowersProps> = ({ className }) => {
             <FlowerThree />
         </div>
     )
-}
+})
 
 const FlowerOne = () => {
     return (
