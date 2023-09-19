@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import cls from './Work.module.scss'
 import gsap from 'gsap'
 import { projectData } from 'entities/Works/data/data'
-import image from '../../../shared/assets/pictures/work1.png'
 import Paragraph from 'shared/ui/Paragraph/Paragraph'
 import { typedMemo } from 'app/types/memo'
 
@@ -19,7 +18,8 @@ export const Work: FC<WorkProps> = typedMemo(() => {
     const isWorksClosing = useSelector(getIsWorksClosing)
     const isWorksOpened = useSelector(getIsWorksOpen)
     const currentProject = useSelector(getCurrentProject)
-    const description = projectData[currentProject].description
+    // const description = projectData[currentProject].description
+    const { description, image } = projectData[currentProject]
     const text = useRef(null)
     const wrapper = useRef(null)
     const q = gsap.utils.selector(text)
@@ -67,8 +67,11 @@ export const Work: FC<WorkProps> = typedMemo(() => {
             <figure className={cls.figure}>
                 <img src={image} className={cls.image}></img>
             </figure>
-            <div ref={text} className={cls.description}>
-                <Paragraph text={description} />
+            <div className={cls.descriptionWrapper}>
+                <div ref={text} className={cls.description}>
+                    <p>{description}</p>
+                    {/* <Paragraph text={description} /> */}
+                </div>
             </div>
         </div>
     )

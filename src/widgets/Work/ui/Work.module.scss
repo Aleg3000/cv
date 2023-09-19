@@ -27,8 +27,26 @@
     background-size: cover;
 }
 
+.descriptionWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: backdrop-filter 0.5s ease-in;
+
+    &:hover {
+        backdrop-filter: grayscale(100%);
+
+        .description {
+            opacity: 1;
+        }
+    }
+
+}
+
 .description {
-    opacity: 1;
+    opacity: 0;
     position: absolute;
     display: flex;
     align-items: center;
@@ -37,7 +55,7 @@
     left: 50%;
     transform: translate((-50%, -50%));
     z-index: 10;
-    width: 35rem;
+    width: 52rem;
 
     // height: 23.5rem;
     flex-shrink: 0;
@@ -49,6 +67,9 @@
     font-weight: 800;
     line-height: normal;
     text-transform: capitalize;
+    // pointer-events: none;
+
+    transition: opacity 0.5s ease-in;
 }
 
 .descriptionText {
