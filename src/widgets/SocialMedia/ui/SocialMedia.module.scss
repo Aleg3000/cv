@@ -1,11 +1,16 @@
 .SocialMedia {
     display: flex;
-    gap: 3.3rem;
+    gap: 3rem;
     padding-left: 13.3rem;
 
     svg {
         opacity: 0;
-        width: 5rem;
-        height: 5rem;
+        width: 4rem;
+        height: 4rem;
+        transition: scale 0.3s ease;
+
+        &:hover {
+            scale: 1.2;
+        }
     }
 }
