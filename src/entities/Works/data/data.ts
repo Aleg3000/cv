@@ -13,7 +13,7 @@ interface Project {
 export const projectData: Project[] = [
     {
         title: 'Project-D',
-        description: 'Our web studio\'s site, developed using React and GSAP, is a minimalist showcase of our work. It features smooth animations, highlighting our commitment to modern web design.',
+        description: 'Web studio\'s site, developed using React and GSAP, is a minimalist showcase of our work. It features smooth animations, highlighting our commitment to modern web design.',
         stack: ['react', 'scss'],
         image: projectDImage
     },
