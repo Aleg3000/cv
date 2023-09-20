@@ -11,8 +11,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 21rem;
-    height: 10rem;
+    // width: 21rem;
+    // height: 10rem;
 
     // display: flex;
     // justify-content: center;
@@ -22,6 +22,12 @@
         position: absolute;
         top: 0;
         left: 0;
+        stroke-width: 3px;
+        stroke: #4ECAFF;
+
+        path {
+            fill: #D8F6FF;
+        }
     }
 
     p {
@@ -39,4 +45,29 @@
         color: var(--color-blush-pink);
         -webkit-text-stroke: 0.2rem var(--color-shocking-pink);
     }
+}
+
+.cloud1, .cloud:has(.cloud1) {
+    height: 9.5rem; 
+    width: 14rem 
+}
+
+.cloud2, .cloud:has(.cloud2) {
+    height: 10.5rem; 
+    width: 17.5rem 
+}
+
+.cloud3, .cloud:has(.cloud3) {
+    height: 12.3rem; 
+    width: 24.0rem 
+}
+
+.cloud4, .cloud:has(.cloud4) {
+    height: 9.9rem; 
+    width: 20.7rem 
+}
+
+.cloud5, .cloud:has(.cloud5) {
+    height: 12rem; 
+    width: 17.55rem 
 }
