@@ -3,11 +3,10 @@
     color: var(--color-golden-fizz);
     -webkit-text-stroke: 0.5rem var(--color-shocking-pink);
     font-family: 'Monument Extended';
-
-    // font-family: var(--font-monument-extended);
     font-size: 8rem;
     font-style: normal;
     font-weight: 400;
+    user-select: none;
 
     // line-height: normal;
     // text-transform: capitalize;
@@ -19,6 +18,7 @@
         position: relative;
         vertical-align: middle;
         white-space: pre;
+        user-select: none;
       }
 }
 

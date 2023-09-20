@@ -12,15 +12,6 @@ interface TitleProps {
 const Title = forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
     const { className, text, onClick } = props
 
-    // const titleRef = ref as MutableRefObject<HTMLHeadingElement>
-
-    // useLayoutEffect(() => {
-    //     gsap.to(titleRef.current, {
-    //         opacity: 1,
-    //         duration: 5
-    //     })
-    // }, [titleRef])
-
     return (
         <h1 ref={ref} onClick={onClick} className={classNames(cls.Title, [className])}>
             {text.split('').map((letter, index) => {
