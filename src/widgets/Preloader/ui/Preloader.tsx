@@ -42,13 +42,20 @@ export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
                 opacity: 0,
                 y: -100,
                 scale: 0.3
+                // onComplete: () => { document.querySelector('meta[name="theme-color"]').setAttribute('content', '#80FF00') }
             })
             .to(a.current, {
                 // delay: 0.7,
                 opacity: 0,
                 duration: 1,
-                onComplete: () => { onPreloaded(true) }
+                onComplete: () => {
+                    onPreloaded(true)
+                }
             })
+            .to('body', {
+                duration: 1.5,
+                backgroundColor: '#80FF00'
+            }, '-=0.8')
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (

@@ -8,18 +8,23 @@
 html {
     @extend %cover;
   
-    background: var(--color-chartreuse);
+    // background: var(--color-chartreuse);
     color: var(--color-white);
     font-size: calc(100vw / 1280 * 10);
     font-family: var(--font-monument-extended);
     line-height: 1;
     overflow: hidden;
     position: fixed;
-  }
+}
   
-  body {
-    @extend %cover;
+body {
+  @extend %cover;
 
-    position: fixed;
-  }
+  position: fixed;
+  color: #99C4E4;
+  background-color: var(--color-cornflower-blue);
+}
 
+#app {
+  // background: var(--color-chartreuse);
+}
