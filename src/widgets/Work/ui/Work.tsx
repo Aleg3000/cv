@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import cls from './Work.module.scss'
 import gsap from 'gsap'
 import { projectData } from 'entities/Works/data/data'
-import Paragraph from 'shared/ui/Paragraph/Paragraph'
+// import Paragraph from 'shared/ui/Paragraph/Paragraph'
 import { typedMemo } from 'app/types/memo'
 
 interface WorkProps {
@@ -27,8 +27,9 @@ export const Work: FC<WorkProps> = typedMemo(() => {
     useLayoutEffect(() => {
         if (isWorksClosing) {
             gsap.to(wrapper.current, {
+                onComplete: () => { wrapper.current.style.visibility = 'hidden' },
                 opacity: 0,
-                duration: 0.5
+                duration: 1
             })
         }
     }, [isWorksClosing, wrapper])
@@ -49,6 +50,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
             })
         } else {
             gsap.to(wrapper.current, {
+                onStart: () => { wrapper.current.style.visibility = 'visible' },
                 duration: 1,
                 opacity: 1
             })
