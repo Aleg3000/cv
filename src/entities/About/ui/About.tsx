@@ -112,7 +112,7 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
             <section ref={description} className={cls.description}>
                 <h2>oleg ganin</h2>
                 {/* <Paragraph text='Im a creative developer with years of experience in building products and appealing web experiences. I&aposve collaborated with individuals and teams to build experiences for SMEs and large enterprises including Wise, Google, Interswitch and Intelia.Each project is an opportuinity to learn new concepts across multiple domains including arts, maths and physics.' /> */}
-                <p>I&aposm a creative developer with years of experience in building products and appealing web experiences. I&aposve collaborated with individuals and teams to build experiences for SMEs and large enterprises including Wise, Google, Interswitch and Intelia.Each project is an opportuinity to learn new concepts across multiple domains including arts, maths and physics.</p>
+                <p>Known for my creative prowess in front-end web development, I excel in crafting visually stunning and user-friendly websites. My coding skills turn concepts into captivating digital realities.<br></br><br></br>Beyond the screen, I'm an avid thrill-seeker, finding excitement in snowboarding, tackling enduro trails, and going for runs. These adventures inspire my work, infusing my designs with a sense of thrill and seamless flow.<br></br><br></br> With a commitment to excellence, my portfolio speaks for itself. Whether you need a top-tier web developer or an adventurous companion on the slopes and trails, I'm here to deliver.</p>
             </section>
             <SocialMedia />
         </div>
