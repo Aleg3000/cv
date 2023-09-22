@@ -19,6 +19,8 @@
     // align-items: center;
 
     svg {
+        height: 100%;
+        width: 100%;
         position: absolute;
         top: 0;
         left: 0;
@@ -48,26 +50,36 @@
 }
 
 .cloud1, .cloud:has(.cloud1) {
-    height: 9.5rem; 
-    width: 14rem 
+    height: 11.5rem; 
+    width: 15.3rem 
 }
 
 .cloud2, .cloud:has(.cloud2) {
-    height: 10.5rem; 
-    width: 17.5rem 
+    height: 10.7rem; 
+    width: 16.1rem 
 }
 
 .cloud3, .cloud:has(.cloud3) {
     height: 12.3rem; 
-    width: 24.0rem 
+    width: 20.9rem 
 }
 
 .cloud4, .cloud:has(.cloud4) {
-    height: 9.9rem; 
-    width: 20.7rem 
+    height: 10.9rem; 
+    width: 16.4rem 
 }
 
 .cloud5, .cloud:has(.cloud5) {
-    height: 12rem; 
-    width: 17.55rem 
+    height: 14.2rem; 
+    width: 20.8rem 
+}
+
+.cloud6, .cloud:has(.cloud6) {
+    height: 11.2rem; 
+    width: 18.5rem 
+}
+
+.cloud7, .cloud:has(.cloud7) {
+    height: 11.5rem; 
+    width: 24.7rem 
 }
