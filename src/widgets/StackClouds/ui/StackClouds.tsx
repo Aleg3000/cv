@@ -16,7 +16,7 @@ interface StackCloudsProps {
     className?: string
 }
 
-const fullStack = ['react', 'js', 'redux', 'three.js', 'css', 'scss', 'html', 'git', 'storybook']
+const fullStack = ['React', 'JavaScript', 'TypeScript', 'Redux', 'Three.js', 'CSS', 'SCSS', 'HTML', 'Git', 'Storybook', 'Shaders', 'Webpack']
 
 const Cloud1 = typedMemo(() => {
     return (
