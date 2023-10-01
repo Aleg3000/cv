@@ -1,0 +1,76 @@
+.AboutMobile {
+    position: absolute;
+    bottom: 52svh;
+    left: 0;
+    width: 100%;
+    height: 18svh;
+    border-radius: 50px;
+    border: 5px solid var(--color-shocking-pink);
+    background: var(--color-carousel-pink);
+    cursor: pointer;
+    // overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 0;
+
+    .title {
+        // padding-left: 13.3rem;
+    }
+}
+
+.description {
+    // padding-left: 13.3rem;
+    opacity: 0;
+    font-family: 'Comic Sans MS';
+    color: var(--color-rose-bud-cherry);
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    line-height: normal;
+
+    h2 {
+        font-size: 4rem;
+        font-style: normal;
+        text-transform: capitalize;
+        text-align: center;
+        font-size: 2.6rem;
+    }
+
+    .fadedText {
+        position: relative;
+        height: 44svh;
+        overflow: hidden;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        &::after {
+            content: '';
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(250, 226, 247, 0.00) 0%, #FAE2F7 78.65%);
+            width: 100%;
+            height: 26svh;
+        }
+
+        p {
+            width: 34.3rem;
+            font-style: italic;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    }   
+} 
+
+.closeButton {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    bottom: 0;
+    right: -5px;
+}

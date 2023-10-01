@@ -3,6 +3,11 @@
     gap: 3rem;
     padding-left: 13.3rem;
 
+    @media(max-width: 768px) {
+        padding-left: 0;
+        gap: 4rem;
+      }
+  
     svg {
         opacity: 0;
         width: 4rem;
@@ -12,5 +17,10 @@
         &:hover {
             scale: 1.2;
         }
+
+        @media(max-width: 768px) {
+            width: 30px;
+            height: 30px;
+          }
     }
 }

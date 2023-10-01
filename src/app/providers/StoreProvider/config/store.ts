@@ -1,6 +1,6 @@
 import { configureStore, type Store } from '@reduxjs/toolkit'
 import { aboutReducer } from 'entities/About'
-import { worksReducer } from 'entities/Works/model'
+import { worksReducer } from 'entities/Works'
 import { type StateSchema } from './StateSchema'
 
 export function createReduxStore (initialState?: StateSchema): Store {

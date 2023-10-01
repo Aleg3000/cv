@@ -1,17 +1,18 @@
 import { getIsAboutOpen } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { type FC, useLayoutEffect, useRef, forwardRef } from 'react'
+import { type FC, useLayoutEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { worksActions } from '../model'
 import cls from './Works.module.scss'
 import gsap from 'gsap'
 import { aboutActions } from 'entities/About'
 import { Work } from 'widgets/Work'
-import { getWorks } from '../model/selectors/getWorks/getWorks'
+import { getWorks } from '../../model/selectors/getWorks/getWorks'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import { typedMemo } from 'app/types/memo'
-import WorksLogoSVG from 'shared/assets/icons/works.svg'
+
+import { worksActions } from 'entities/Works'
+import WorksLogo from 'shared/ui/WorksLogo/WorksLogo'
 
 interface WorksProps {
     className?: string
@@ -97,11 +98,3 @@ export const Works: FC<WorksProps> = typedMemo(({ className }) => {
         </div>
     )
 })
-
-const WorksLogo = typedMemo(forwardRef<HTMLDivElement>((_, ref) => {
-    return (
-        <div ref={ref} className={cls.logo}>
-            <WorksLogoSVG />
-        </div>
-    )
-}))

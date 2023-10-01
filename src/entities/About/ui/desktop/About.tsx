@@ -2,8 +2,8 @@ import { type FC, useRef, useLayoutEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { getIsAboutClosing, getIsAboutOpen, getIsAboutOpening } from '../model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { aboutActions } from '../model/slice/aboutSlice'
+import { getIsAboutClosing, getIsAboutOpen, getIsAboutOpening } from '../../model/selectors/getIsAboutOpen/getIsAboutOpen'
+import { aboutActions } from '../../model/slice/aboutSlice'
 import cls from './About.module.scss'
 import gsap from 'gsap'
 import { getIsWorksOpen, getIsWorksOpening } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
@@ -24,7 +24,7 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
     const isAboutOpening = useSelector(getIsAboutOpening)
     const isAboutClosing = useSelector(getIsAboutClosing)
 
-    const isWorksOpen = useSelector(getIsWorksOpen)
+    const isWorksOpened = useSelector(getIsWorksOpen)
     const isWorksOpening = useSelector(getIsWorksOpening)
 
     const description = useRef(null)
@@ -37,7 +37,7 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
     const onClick = (): void => {
         if (isAboutOpened) {
             dispatch(aboutActions.close())
-        } else if (!isWorksOpen) {
+        } else if (!isWorksOpened) {
             dispatch(aboutActions.open())
         }
     }
@@ -84,14 +84,14 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
                 opacity: 0,
                 stagger: 0.05
             })
-        } else if (!isWorksOpen) {
+        } else if (!isWorksOpened) {
             gsap.to(q('.titleSpan'), {
                 duration: 1,
                 opacity: 1,
                 stagger: 0.05
             })
         }
-    }, [isWorksOpening, isWorksOpen, q])
+    }, [isWorksOpening, isWorksOpened, q])
 
     // const onMouseEnter = () => {
     // }
@@ -108,7 +108,7 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
             className={classNames(cls.About, [className])}
             style={{ zIndex: getZIndex('about') }}
         >
-            {isWorksOpen ? <ProjectNavigation /> : <Title ref={title} className={cls.title} text='ABOUT ME' />}
+            {isWorksOpened ? <ProjectNavigation /> : <Title ref={title} className={cls.title} text='ABOUT ME' />}
             <section ref={description} className={cls.description}>
                 <h2>oleg ganin</h2>
                 {/* <Paragraph text='Im a creative developer with years of experience in building products and appealing web experiences. I&aposve collaborated with individuals and teams to build experiences for SMEs and large enterprises including Wise, Google, Interswitch and Intelia.Each project is an opportuinity to learn new concepts across multiple domains including arts, maths and physics.' /> */}

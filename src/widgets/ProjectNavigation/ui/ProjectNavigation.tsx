@@ -1,5 +1,4 @@
 import { projectData } from 'entities/Works/data/data'
-import { worksActions } from 'entities/Works/model'
 import { getCurrentProject, getIsProjectChanging } from 'entities/Works/model/selectors/getCurrentProject/getCurrentProject'
 import { type ReactElement, type FC, useRef, useLayoutEffect, useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
@@ -10,6 +9,7 @@ import cls from './ProjectNavigation.module.scss'
 import gsap from 'gsap'
 import { getIsWorksClosing } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
 import { typedMemo } from 'app/types/memo'
+import { worksActions } from 'entities/Works'
 
 interface ProjectNavigationProps {
     className?: string

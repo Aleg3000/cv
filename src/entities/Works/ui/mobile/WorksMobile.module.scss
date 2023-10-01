@@ -1,0 +1,30 @@
+.WorksMobile {
+    cursor: pointer;
+    position: absolute;
+    // padding: 0 5rem;
+    bottom: 0;
+    left: 0rem;
+    width: 100vw;
+    height: 52.1svh;
+    border-radius: 50px;
+    background: var(--color-blush-pink);
+}
+
+.logoWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        @media(max-width: 768px) {
+            // height: 80%;
+            // width: 50%;
+            // width: 21.5rem;
+            // height: 29.6rem;
+            // margin: 3.5rem auto;
+          }
+    }
+}
