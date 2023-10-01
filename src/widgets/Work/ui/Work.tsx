@@ -19,7 +19,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
     const isWorksOpened = useSelector(getIsWorksOpen)
     const currentProject = useSelector(getCurrentProject)
     // const description = projectData[currentProject].description
-    const { description, image } = projectData[currentProject]
+    const { description, imageD: image } = projectData[currentProject]
     const text = useRef(null)
     const wrapper = useRef(null)
     const q = gsap.utils.selector(text)
