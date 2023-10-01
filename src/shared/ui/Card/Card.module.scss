@@ -1,0 +1,53 @@
+.Card {
+    position: relative;
+    // top: 0;
+    // left: 0;
+    width: 100vw;
+    height: 100%;
+
+    img {
+        // opacity: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.fadeBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 65svh;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 42, 136, 0.00) 27.56%, #002A89 79.97%);
+}
+
+.description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.6rem;
+    padding-bottom: 7rem;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Monument Extended;
+    font-style: normal;
+    line-height: normal;
+    text-transform: capitalize;
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+
+    p {
+        width: 35.2rem;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+}
