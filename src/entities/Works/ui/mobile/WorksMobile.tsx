@@ -9,6 +9,7 @@ import { getIsWorksClosing, getIsWorksOpen, getIsWorksOpening } from 'entities/W
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { worksActions } from 'entities/Works/model/slice/worksSlice'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
+import { WorksSlider } from 'features/WorksSlider'
 
 interface WorksMobileProps {
     className?: string
@@ -18,6 +19,7 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
     const logo = useRef(null)
     const wrapper = useRef()
     const logoWrapper = useRef()
+    const sliderWrapper = useRef<HTMLDivElement>(null)
 
     const dispatch = useAppDispatch()
 
@@ -67,6 +69,10 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
                 scaleX: 0.65,
                 ease: 'none'
             })
+            gsap.to(sliderWrapper.current, {
+                delay: 0.5,
+                opacity: 1
+            })
         } else if (isWorksClosing) {
             gsap.to(wrapper.current, {
                 height: '52.1svh',
@@ -80,16 +86,19 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
                 scaleX: 1,
                 ease: 'none'
             })
+            gsap.to(sliderWrapper.current, {
+                opacity: 0
+            })
         }
     }, [dispatch, isWorksClosing, isWorksOpening])
 
-    const openWorks = () => {
+    const openWorks = (): void => {
         if (!isAboutOpened && !isWorksOpening && !isWorksOpened) {
             dispatch(worksActions.open())
         }
     }
 
-    const closeWorks = () => {
+    const closeWorks = (): void => {
         if (isWorksOpened) {
             dispatch(worksActions.close())
         }
@@ -97,6 +106,7 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
 
     return (
         <div ref={wrapper} onClick={openWorks} className={classNames(cls.WorksMobile, [className])}>
+            <WorksSlider ref={sliderWrapper}/>
             <div ref={logoWrapper} className={cls.logoWrapper}>
                 <WorkLogoMobile ref={logo} />
             </div>
