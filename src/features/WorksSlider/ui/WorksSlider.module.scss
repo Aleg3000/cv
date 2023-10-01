@@ -1,0 +1,20 @@
+.WorksSliderWrapper {
+    opacity: 0;
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.WorksSlider {
+    display: flex;
+    height: 100%;
+}
+
+.worksSliderVisibleContainer {
+    overflow: hidden;
+    height: 100%;
+    border-radius: 50px;
+}
