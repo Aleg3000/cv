@@ -1,0 +1,15 @@
+.logo {
+    // position: relative;
+    flex-shrink: 0;
+    transform: translateX(0%);
+    width: 29rem;
+    height: 48.5rem;
+
+    @media(max-width: 768px) {
+        // height: 80%;
+        // width: 50%;
+        width: 19.5rem;
+        height: 28rem;
+        margin: 3.5rem auto;
+      }
+}
