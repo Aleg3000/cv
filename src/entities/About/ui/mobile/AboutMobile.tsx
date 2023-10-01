@@ -59,13 +59,6 @@ const AboutMobile: FC<AboutMobileProps> = ({ className }) => {
         if (isAboutClosing) tl.current.reverse()
     }, [isAboutOpening, isAboutClosing])
 
-    // const onClick = (): void => {
-    //     if (isAboutOpened) {
-    //         dispatch(aboutActions.close())
-    //     } else if (!isWorksOpened) {
-    //         dispatch(aboutActions.open())
-    //     }
-    // }
     const openAbout = (): void => {
         if (!isWorksOpened && !isAboutOpened) {
             dispatch(aboutActions.open())
@@ -83,7 +76,7 @@ const AboutMobile: FC<AboutMobileProps> = ({ className }) => {
                 <h2>oleg ganin</h2>
                 <div className={cls.fadedText}>
                     <p>Known for my creative prowess in front-end web development, I excel in crafting visually stunning and user-friendly websites. My coding skills turn concepts into captivating digital realities.<br></br><br></br>Beyond the screen, I'm an avid thrill-seeker, finding excitement in snowboarding, tackling enduro trails, and going for runs. These adventures inspire my work, infusing my designs with a sense of thrill and seamless flow.<br></br><br></br> With a commitment to excellence, my portfolio speaks for itself. Whether you need a top-tier web developer or an adventurous companion on the slopes and trails, I'm here to deliver.</p>
-                    <p>My Stack: JavaScript, React, Redux, WebGl</p>
+                    <p>My Stack: JavaScript, React, Redux, WebGl...</p>
                 </div>
             </section>
             <SocialMedia />
