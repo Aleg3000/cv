@@ -10,6 +10,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { worksActions } from 'entities/Works/model/slice/worksSlice'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
 import { WorksSlider } from 'features/WorksSlider'
+import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 
 interface WorksMobileProps {
     className?: string
@@ -20,6 +21,7 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
     const wrapper = useRef()
     const logoWrapper = useRef()
     const sliderWrapper = useRef<HTMLDivElement>(null)
+    const closeButton = useRef(null)
 
     const dispatch = useAppDispatch()
 
@@ -32,22 +34,37 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
     const isWorksOpened = useSelector(getIsWorksOpen)
 
     useLayoutEffect(() => {
+        gsap.fromTo(wrapper.current, {
+            autoAlpha: 0
+        },
+        {
+            delay: 0.5,
+            autoAlpha: 1,
+            duration: 0.8
+        })
+    }, [])
+
+    useLayoutEffect(() => {
         if (isAboutOpening) {
             gsap.to(logo.current, {
+                duration: 0.4,
                 scaleY: 0.36,
                 ease: 'none'
             })
             gsap.to([wrapper.current, logoWrapper.current], {
+                duration: 0.4,
                 height: '20.1svh',
                 ease: 'none'
             })
         } else if (isAboutClosing) {
             gsap.to(logo.current, {
+                duration: 0.4,
                 delay: 1, // sum of about description animation
                 scaleY: 1,
                 ease: 'none'
             })
             gsap.to([wrapper.current, logoWrapper.current], {
+                duration: 0.4,
                 delay: 1, // sum of about description animation
                 height: '52.1svh',
                 ease: 'none'
@@ -104,13 +121,33 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
         }
     }
 
+    useLayoutEffect(() => {
+        if (isWorksOpened && isWorksClosing) {
+            gsap.to(closeButton.current, {
+                x: 100,
+                duration: 1,
+                rotate: 360
+            })
+        }
+        if (isWorksOpened && !isWorksClosing) {
+            gsap.fromTo(closeButton.current, {
+                delay: 2,
+                duration: 1,
+                x: 100
+            }, {
+                x: 0,
+                rotate: -360
+            })
+        }
+    }, [isWorksOpened, isWorksClosing])
+
     return (
-        <div ref={wrapper} onClick={openWorks} className={classNames(cls.WorksMobile, [className])}>
+        <div style={{ zIndex: getZIndex('works') }} ref={wrapper} onClick={openWorks} className={classNames(cls.WorksMobile, [className])}>
             <WorksSlider ref={sliderWrapper}/>
             <div ref={logoWrapper} className={cls.logoWrapper}>
                 <WorkLogoMobile ref={logo} />
             </div>
-            {isWorksOpened && <CloseButton onClick={closeWorks}/>}
+            {isWorksOpened && <CloseButton ref={closeButton} onClick={closeWorks}/>}
         </div>
     )
 }
