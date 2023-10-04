@@ -1,16 +1,28 @@
-import { type FC } from 'react'
+import { useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Dude.module.scss'
-// import DudeLogo from 'shared/assets/icons/dude.svg'
+import gsap from 'gsap'
 
 interface DudeProps {
     className?: string
 }
 
 export const Dude: FC<DudeProps> = ({ className }) => {
+    const dudeRef = useRef()
+
+    useLayoutEffect(() => {
+        gsap.fromTo(dudeRef.current, {
+            autoAlpha: 0
+        },
+        {
+            delay: 1.8,
+            duration: 0.8,
+            autoAlpha: 1
+        })
+    }, [])
     return (
-        <div style={{ zIndex: getZIndex('dude') }} className={classNames(cls.Dude, [className])}>
+        <div ref={dudeRef} style={{ zIndex: getZIndex('dude') }} className={classNames(cls.Dude, [className])}>
             <DudeLogo />
         </div>
     )

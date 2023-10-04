@@ -5,8 +5,22 @@
     width: 26rem;
     height: 28rem;
 
+
+    @media(max-width: 768px) {
+        top: unset;
+        bottom: 70.1svh;
+        left: 30%;
+        width: 20svh;
+        height: 20svh;
+      }
+
     svg {
         width: 26rem;
         height: 28rem;
+
+        @media(max-width: 768px) {
+            width: 20svh;
+            height: 20svh;
+          }
     }
 }
