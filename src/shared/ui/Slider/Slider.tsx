@@ -94,7 +94,6 @@ const Slider: FC<SliderProps> = ({ className, children, main }): ReactElement =>
 
     const getAnchors = (cont: HTMLDivElement): void => {
         const anchors = Array.from(cont.children).map((el: HTMLElement) => el.offsetLeft /* left padding */)
-        console.log(anchors)
         setAnchors(anchors)
     }
 

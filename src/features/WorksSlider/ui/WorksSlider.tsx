@@ -11,7 +11,7 @@ export const WorksSlider = typedMemo(forwardRef<HTMLDivElement>((_, ref) => {
         <div ref={ref} className={cls.WorksSliderWrapper}>
             <div className={cls.worksSliderVisibleContainer}>
                 <Slider main={wrapper} className={cls.WorksSlider}>
-                    {projectData.map((project, index) => <Card key={index} image={project.imageM} title={project.title} description={project.description} />)}
+                    {projectData.map((project, index) => <Card key={index} currentProject={index} image={project.imageM} title={project.title} description={project.description} />)}
                 </Slider>
             </div>
         </div>
