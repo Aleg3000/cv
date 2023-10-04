@@ -8,6 +8,7 @@ import gsap from 'gsap'
 import { projectData } from 'entities/Works/data/data'
 // import Paragraph from 'shared/ui/Paragraph/Paragraph'
 import { typedMemo } from 'app/types/memo'
+import { ProjectLinks } from 'widgets/ProjectLinks'
 
 interface WorkProps {
     className?: string
@@ -19,7 +20,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
     const isWorksOpened = useSelector(getIsWorksOpen)
     const currentProject = useSelector(getCurrentProject)
     // const description = projectData[currentProject].description
-    const { description, imageD: image } = projectData[currentProject]
+    const { description, imageD: image, github, worldWide } = projectData[currentProject]
     const text = useRef(null)
     const wrapper = useRef(null)
     const q = gsap.utils.selector(text)
@@ -72,6 +73,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
             <div className={cls.descriptionWrapper}>
                 <div ref={text} className={cls.description}>
                     <p>{description}</p>
+                    <ProjectLinks currentProject={currentProject}/>
                     {/* <Paragraph text={description} /> */}
                 </div>
             </div>
