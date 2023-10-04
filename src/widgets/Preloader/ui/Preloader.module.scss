@@ -14,10 +14,21 @@
     .myNameIs {
         width: 44rem;
         height: 9.5rem;
+
+        @media(max-width: 420px) {
+            width: 22rem;
+            height: 5rem;
+          }
     }
 
     img {
         width: 87rem;
         height: 26rem;
+
+        @media(max-width: 420px) {
+            width: 45rem;
+            height: 14rem;
+          }
     }
+
 }
