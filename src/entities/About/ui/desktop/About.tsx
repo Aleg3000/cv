@@ -63,7 +63,6 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
                 //     opacity: 1,
                 //     transform: 'translateY(0%)',
                 //     stagger: 0.01,
-                //     onComplete: () => { console.log('start878787 anim') }
                 // })
         }, wrapper)
 

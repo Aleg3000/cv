@@ -115,7 +115,6 @@ export const StackClouds: FC<StackCloudsProps> = typedMemo(({ className }) => {
 const Cloud = typedMemo(({ name, index, q }: { name: string, index: number, q: number }) => {
     const cloud = useRef(null)
     const height = window.innerHeight * 0.15 * Math.random() // 0.15 how low from the top of screen clouds will be
-    console.log(height)
     const CloudElement = clouds[index % clouds.length]
 
     useLayoutEffect(() => {

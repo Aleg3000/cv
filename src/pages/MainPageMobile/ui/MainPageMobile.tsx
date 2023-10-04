@@ -15,7 +15,7 @@ const MainPageMobile: FC<MainPageProps> = ({ className }) => {
         <div style={{ zIndex: getZIndex('main') }} className={classNames(cls.MainPageMobile, [className])}>
             <AboutMobile />
             <WorksMobile />
-            {/* <Dude /> */}
+            <Dude />
         </div>
     )
 }
