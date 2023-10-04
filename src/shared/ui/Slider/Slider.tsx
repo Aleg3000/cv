@@ -59,6 +59,7 @@ const Slider: FC<SliderProps> = ({ className, children, main }): ReactElement =>
         setTouches([])
 
         if (velocity === undefined) {
+            getToPoint(cont.current, velocity, anchors[currentCard])
             return
         } else if (Math.abs(velocity) > 0.1) {
             currentCard += velocity < 0 ? 1 : -1
