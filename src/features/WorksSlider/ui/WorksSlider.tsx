@@ -2,7 +2,8 @@ import { typedMemo } from 'app/types/memo'
 import { projectData } from 'entities/Works/data/data'
 import { forwardRef, useRef } from 'react'
 import Card from 'shared/ui/Card/Card'
-import Slider from 'shared/ui/Slider/Slider'
+import Slider from 'widgets/Slider/Slider'
+import { SliderNavigation } from 'widgets/SliderNavigation'
 import cls from './WorksSlider.module.scss'
 
 export const WorksSlider = typedMemo(forwardRef<HTMLDivElement>((_, ref) => {
@@ -13,6 +14,7 @@ export const WorksSlider = typedMemo(forwardRef<HTMLDivElement>((_, ref) => {
                 <Slider main={wrapper} className={cls.WorksSlider}>
                     {projectData.map((project, index) => <Card key={index} currentProject={index} image={project.imageM} title={project.title} description={project.description} />)}
                 </Slider>
+                <SliderNavigation />
             </div>
         </div>
     )
