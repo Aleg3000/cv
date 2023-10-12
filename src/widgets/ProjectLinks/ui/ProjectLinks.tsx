@@ -10,7 +10,7 @@ interface ProjectLinksProps {
     currentProject: number
 }
 
-export const ProjectLinks: FC<ProjectLinksProps> = ({ className, currentProject }) => {
+export const ProjectLinks: FC<ProjectLinksProps> = typedMemo(({ className, currentProject }) => {
     const { github, worldWide } = projectData[currentProject]
     const { isMobile } = useMatchMedia()
 
@@ -20,7 +20,7 @@ export const ProjectLinks: FC<ProjectLinksProps> = ({ className, currentProject 
             <WorldWide link={worldWide} isMobile={isMobile} />
         </div>
     )
-}
+})
 
 const Github = typedMemo(({ link, isMobile }: { link: string, isMobile: boolean }) => {
     return (
