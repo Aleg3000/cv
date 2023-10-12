@@ -20,7 +20,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
     const isWorksOpened = useSelector(getIsWorksOpen)
     const currentProject = useSelector(getCurrentProject)
     // const description = projectData[currentProject].description
-    const { description, imageD: image, github, worldWide } = projectData[currentProject]
+    const { description, imageD: image } = projectData[currentProject]
     const text = useRef(null)
     const wrapper = useRef(null)
     const q = gsap.utils.selector(text)
@@ -40,8 +40,9 @@ export const Work: FC<WorkProps> = typedMemo(() => {
         if (isProjectChanging) {
             gsap.to(wrapper.current, {
                 duration: 1,
+                y: 20,
                 opacity: 0,
-                delay: 1
+                delay: 0.5
             })
             // gsap.to(q('.paragraphSpan'), {
             //     duration: 0.5,
@@ -53,7 +54,8 @@ export const Work: FC<WorkProps> = typedMemo(() => {
             gsap.to(wrapper.current, {
                 onStart: () => { wrapper.current.style.visibility = 'visible' },
                 duration: 1,
-                opacity: 1
+                opacity: 1,
+                y: 0
             })
             // gsap.to(q('.paragraphSpan'), {
             //     duration: 0.5,

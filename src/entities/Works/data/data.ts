@@ -49,7 +49,7 @@ export const projectData: Project[] = [
     {
         title: 'Diver Port',
         description: 'Our portfolio website, brought to life with the magic of WebGL, serves as a captivating canvas for a talented creative designer. Explore their work in a visually stunning and interactive way.',
-        stack: ['vanilla js', 'ogl', 'prismic', 'shaders'],
+        stack: ['javascript', 'ogl', 'prismic', 'shaders'],
         imageD: diverImageD,
         imageM: diverImageM,
         github: 'https://github.com/Aleg3000/nastya-diver-portfolio',

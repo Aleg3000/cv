@@ -5,6 +5,8 @@ import cls from './Preloader.module.scss'
 import gsap from 'gsap'
 import og from 'shared/assets/pictures/og.png'
 import { typedMemo } from 'app/types/memo'
+import { projectData } from 'entities/Works/data/data'
+import { useMatchMedia } from 'shared/lib/hooks/useMatchMedia/useMatchMedia'
 
 interface PreloaderProps {
     className?: string
@@ -14,7 +16,15 @@ interface PreloaderProps {
 export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
     const a = useRef(null)
     const q = gsap.utils.selector(a)
+    const { isMobile } = useMatchMedia()
+    console.log(isMobile)
     useLayoutEffect(() => {
+        const images = projectData.map(el => isMobile ? el.imageM : el.imageD)
+        images.forEach(src => {
+            const image = new Image()
+            image.src = src
+        })
+
         gsap.timeline().from(q('path'), {
             opacity: 0,
             duration: 2,
