@@ -43,25 +43,25 @@ export const Work: FC<WorkProps> = typedMemo(() => {
                 opacity: 0,
                 delay: 1
             })
-            gsap.to(q('.paragraphSpan'), {
-                duration: 0.5,
-                opacity: 0,
-                stagger: 0.03,
-                transform: 'translateY(100%)'
-            })
+            // gsap.to(q('.paragraphSpan'), {
+            //     duration: 0.5,
+            //     opacity: 0,
+            //     stagger: 0.03,
+            //     transform: 'translateY(100%)'
+            // })
         } else {
             gsap.to(wrapper.current, {
                 onStart: () => { wrapper.current.style.visibility = 'visible' },
                 duration: 1,
                 opacity: 1
             })
-            gsap.to(q('.paragraphSpan'), {
-                duration: 0.5,
-                delay: 1,
-                opacity: 1,
-                stagger: 0.03,
-                transform: 'translateY(0%)'
-            })
+            // gsap.to(q('.paragraphSpan'), {
+            //     duration: 0.5,
+            //     delay: 1,
+            //     opacity: 1,
+            //     stagger: 0.03,
+            //     transform: 'translateY(0%)'
+            // })
         }
     }, [isProjectChanging, isWorksClosing, isWorksOpened, q, text, wrapper])
 
