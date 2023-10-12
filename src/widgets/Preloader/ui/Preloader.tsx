@@ -17,7 +17,6 @@ export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
     const a = useRef(null)
     const q = gsap.utils.selector(a)
     const { isMobile } = useMatchMedia()
-    console.log(isMobile)
     useLayoutEffect(() => {
         const images = projectData.map(el => isMobile ? el.imageM : el.imageD)
         images.forEach(src => {

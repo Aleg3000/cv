@@ -54,6 +54,7 @@ export const Work: FC<WorkProps> = typedMemo(() => {
             gsap.to(wrapper.current, {
                 onStart: () => { wrapper.current.style.visibility = 'visible' },
                 duration: 1,
+                delay: 0.5,
                 opacity: 1,
                 y: 0
             })
