@@ -1,4 +1,3 @@
-import { getIsAboutOpen, getIsAboutOpening, getIsAboutClosing } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
 import { useLayoutEffect, useRef, type FC } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -11,24 +10,26 @@ import { getIsWorksOpen } from 'entities/Works/model/selectors/getIsWorksOpen/ge
 import { SocialMedia } from 'widgets/SocialMedia'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { getAbout } from 'entities/About/model/selectors/getAbout/getAbout'
 
 interface AboutMobileProps {
     className?: string
 }
 
 const AboutMobile: FC<AboutMobileProps> = ({ className }) => {
+    const dispatch = useAppDispatch()
+    const {
+        isOpen: isAboutOpened,
+        isOpening: isAboutOpening, isClosing: isAboutClosing
+    } = useSelector(getAbout)
+    const isWorksOpened = useSelector(getIsWorksOpen)
+
     const title = useRef<HTMLHeadingElement>()
     const description = useRef(null)
     const wrapper = useRef(null)
     const closeButton = useRef(null)
-    const dispatch = useAppDispatch()
-    const isAboutOpened = useSelector(getIsAboutOpen)
-    const isAboutOpening = useSelector(getIsAboutOpening)
-    const isAboutClosing = useSelector(getIsAboutClosing)
-
-    const isWorksOpened = useSelector(getIsWorksOpen)
-
     const tl = useRef<GSAPTimeline>()
+
     const q = gsap.utils.selector(wrapper)
 
     useLayoutEffect(() => {

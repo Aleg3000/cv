@@ -19,19 +19,17 @@ interface WorksProps {
 }
 
 export const Works: FC<WorksProps> = typedMemo(({ className }) => {
-    const isAboutOpened = useSelector(getIsAboutOpen)
-
-    const logo = useRef<HTMLDivElement>()
-    const wrapper = useRef(null)
-    const tl = useRef<GSAPTimeline>()
-
+    const dispatch = useAppDispatch()
     const {
         isOpen: isWorksOpened,
         isClosing: isWorksClosing,
         isOpening: isWorksOpening
     } = useSelector(getWorks)
+    const isAboutOpened = useSelector(getIsAboutOpen)
 
-    const dispatch = useAppDispatch()
+    const logo = useRef<HTMLDivElement>()
+    const wrapper = useRef(null)
+    const tl = useRef<GSAPTimeline>()
 
     useLayoutEffect(() => {
         if (isAboutOpened) {

@@ -4,34 +4,36 @@ import cls from './WorksMobile.module.scss'
 import gsap from 'gsap'
 import { typedMemo } from 'app/types/memo'
 import { useSelector } from 'react-redux'
-import { getIsAboutClosing, getIsAboutOpen, getIsAboutOpening } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
-import { getIsWorksClosing, getIsWorksOpen, getIsWorksOpening } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { worksActions } from 'entities/Works/model/slice/worksSlice'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
 import { WorksSlider } from 'features/WorksSlider'
 import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { getWorks } from 'entities/Works/model/selectors/getWorks/getWorks'
+import { getAbout } from 'entities/About/model/selectors/getAbout/getAbout'
 
 interface WorksMobileProps {
     className?: string
 }
 
 const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
+    const dispatch = useAppDispatch()
+    const {
+        isOpen: isWorksOpened,
+        isClosing: isWorksClosing,
+        isOpening: isWorksOpening
+    } = useSelector(getWorks)
+    const {
+        isOpen: isAboutOpened,
+        isOpening: isAboutOpening,
+        isClosing: isAboutClosing
+    } = useSelector(getAbout)
+
     const logo = useRef(null)
     const wrapper = useRef()
     const logoWrapper = useRef()
     const sliderWrapper = useRef<HTMLDivElement>(null)
     const closeButton = useRef(null)
-
-    const dispatch = useAppDispatch()
-
-    const isAboutOpening = useSelector(getIsAboutOpening)
-    const isAboutClosing = useSelector(getIsAboutClosing)
-    const isAboutOpened = useSelector(getIsAboutOpen)
-
-    const isWorksOpening = useSelector(getIsWorksOpening)
-    const isWorksClosing = useSelector(getIsWorksClosing)
-    const isWorksOpened = useSelector(getIsWorksOpen)
 
     useLayoutEffect(() => {
         gsap.fromTo(wrapper.current, {
