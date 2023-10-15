@@ -78,7 +78,7 @@ export const Works: FC<WorksProps> = typedMemo(({ className }) => {
     }, [dispatch, isWorksOpening, isWorksClosing, isAboutOpened])
 
     const onClick = (): void => {
-        if (!isWorksOpened) {
+        if (!isWorksOpened && !isAboutOpened) {
             dispatch(worksActions.open())
         }
     }
