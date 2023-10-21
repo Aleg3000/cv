@@ -1,6 +1,6 @@
 import { type Dispatch, type SetStateAction, useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Preloader.module.scss'
 import gsap from 'gsap'
 import og from 'shared/assets/pictures/og.png'
@@ -68,7 +68,7 @@ export const Preloader: FC<PreloaderProps> = ({ className, onPreloaded }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <div ref={a} style={{ zIndex: getZIndex('preloader') }} className={classNames(cls.Preloader, [className])}>
+        <div ref={a} style={{ zIndex: zIndexes.preloader }} className={classNames(cls.Preloader, [className])}>
             <MyNameIs />
             <img src={og}></img>
         </div>

@@ -7,7 +7,7 @@ import cls from './About.module.scss'
 import gsap from 'gsap'
 import Title from 'shared/ui/Title/Title'
 import { ProjectNavigation } from 'widgets/ProjectNavigation'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import { SocialMedia } from 'widgets/SocialMedia'
 import { typedMemo } from 'app/types/memo'
 import { getAbout } from 'entities/About/model/selectors/getAbout/getAbout'
@@ -100,7 +100,7 @@ export const About: FC<AboutProps> = typedMemo(({ className }) => {
             onClick={onClick}
             ref={wrapper}
             className={classNames(cls.About, [className])}
-            style={{ zIndex: getZIndex('about') }}
+            style={{ zIndex: zIndexes.about }}
         >
             {isWorksOpened ? <ProjectNavigation /> : <Title ref={title} className={cls.title} text='ABOUT ME' />}
             <section ref={description} className={cls.description}>

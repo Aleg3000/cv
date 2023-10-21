@@ -9,7 +9,7 @@ import { aboutActions } from 'entities/About/model/slice/aboutSlice'
 import { getIsWorksOpen } from 'entities/Works/model/selectors/getIsWorksOpen/getIsWorksOpen'
 import { SocialMedia } from 'widgets/SocialMedia'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import { getAbout } from 'entities/About/model/selectors/getAbout/getAbout'
 
 interface AboutMobileProps {
@@ -105,7 +105,7 @@ const AboutMobile: FC<AboutMobileProps> = ({ className }) => {
     }, [isAboutOpened, isAboutClosing])
 
     return (
-        <div style={{ zIndex: getZIndex('about') }} ref={wrapper} onClick={openAbout} className={classNames(cls.AboutMobile, [className])}>
+        <div style={{ zIndex: zIndexes.about }} ref={wrapper} onClick={openAbout} className={classNames(cls.AboutMobile, [className])}>
             <Title ref={title} className={cls.title} text='ABOUT ME' />
             <section ref={description} className={cls.description}>
                 <h2>oleg ganin</h2>

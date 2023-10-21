@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Dude.module.scss'
 import gsap from 'gsap'
 
@@ -22,7 +22,7 @@ export const Dude: FC<DudeProps> = ({ className }) => {
         })
     }, [])
     return (
-        <div ref={dudeRef} style={{ zIndex: getZIndex('dude') }} className={classNames(cls.Dude, [className])}>
+        <div ref={dudeRef} style={{ zIndex: zIndexes.dude }} className={classNames(cls.Dude, [className])}>
             <DudeLogo />
         </div>
     )

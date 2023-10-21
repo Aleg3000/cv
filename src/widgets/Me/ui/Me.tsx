@@ -5,7 +5,7 @@ import avatar from 'shared/assets/pictures/me.png'
 import { useSelector } from 'react-redux'
 import { getIsAboutClosing, getIsAboutOpening } from 'entities/About/model/selectors/getIsAboutOpen/getIsAboutOpen'
 import gsap from 'gsap'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import { typedMemo } from 'app/types/memo'
 
 interface MeProps {
@@ -35,7 +35,7 @@ export const Me: FC<MeProps> = typedMemo(({ className }) => {
     }, [isAboutClosing, isAboutOpening])
 
     return (
-        <div style={{ zIndex: getZIndex('me') }} ref={wrapper} className={classNames(cls.Me, [className])}>
+        <div style={{ zIndex: zIndexes.me }} ref={wrapper} className={classNames(cls.Me, [className])}>
             <figure>
                 <img src={avatar}></img>
             </figure>

@@ -6,7 +6,7 @@ import { getIsWorksOpen } from 'entities/Works/model/selectors/getIsWorksOpen/ge
 import { useLayoutEffect, useRef, useState, type FC } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import cls from './StackClouds.module.scss'
 import gsap from 'gsap'
 import { getTime } from 'shared/lib/getTime/getTime'
@@ -106,7 +106,7 @@ export const StackClouds: FC<StackCloudsProps> = typedMemo(({ className }) => {
     }, [isAboutOpened, isWorksOpened, currentProject, isProjectChanging])
 
     return (
-        <div ref={clouds} style={{ zIndex: getZIndex('clouds') }} className={classNames(cls.StackClouds, [className])}>
+        <div ref={clouds} style={{ zIndex: zIndexes.clouds }} className={classNames(cls.StackClouds, [className])}>
             {stack.map((stack, key, arr) => <Cloud q={arr.length} key={stack} index={key} name={stack}/>)}
         </div>
     )

@@ -8,7 +8,7 @@ import gsap from 'gsap'
 import { aboutActions } from 'entities/About'
 import { Work } from 'widgets/Work'
 import { getWorks } from '../../model/selectors/getWorks/getWorks'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import { typedMemo } from 'app/types/memo'
 
 import { worksActions } from 'entities/Works'
@@ -88,7 +88,7 @@ export const Works: FC<WorksProps> = typedMemo(({ className }) => {
             ref={wrapper}
             onClick={onClick}
             className={classNames(cls.Works, [className])}
-            style={{ zIndex: getZIndex('works') }}
+            style={{ zIndex: zIndexes.works }}
         >
             <WorksLogo ref={logo} />
             <Work/>

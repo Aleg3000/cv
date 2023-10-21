@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, type FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import cls from './Flowers.module.scss'
 import gsap from 'gsap'
 import { typedMemo } from 'app/types/memo'
@@ -23,7 +23,7 @@ export const Flowers: FC<FlowersProps> = typedMemo(({ className }) => {
         return () => { ctx.revert() }
     })
     return (
-        <div ref={wrapper} style={{ zIndex: getZIndex('flowers') }} className={classNames(cls.Flowers, [className])}>
+        <div ref={wrapper} style={{ zIndex: zIndexes.flowers }} className={classNames(cls.Flowers, [className])}>
             <FlowerOne />
             <FlowerTwo />
             <FlowerThree />

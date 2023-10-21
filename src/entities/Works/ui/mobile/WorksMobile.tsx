@@ -8,7 +8,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { worksActions } from 'entities/Works/model/slice/worksSlice'
 import CloseButton from 'shared/ui/CloseButton/CloseButton'
 import { WorksSlider } from 'features/WorksSlider'
-import { getZIndex } from 'shared/lib/zIndexes/zIndexes'
+import { zIndexes } from 'shared/lib/zIndexes/zIndexes'
 import { getWorks } from 'entities/Works/model/selectors/getWorks/getWorks'
 import { getAbout } from 'entities/About/model/selectors/getAbout/getAbout'
 
@@ -144,7 +144,7 @@ const WorksMobile: FC<WorksMobileProps> = ({ className }) => {
     }, [isWorksOpened, isWorksClosing])
 
     return (
-        <div style={{ zIndex: getZIndex('works') }} ref={wrapper} onClick={openWorks} className={classNames(cls.WorksMobile, [className])}>
+        <div style={{ zIndex: zIndexes.works }} ref={wrapper} onClick={openWorks} className={classNames(cls.WorksMobile, [className])}>
             <WorksSlider ref={sliderWrapper}/>
             <div ref={logoWrapper} className={cls.logoWrapper}>
                 <WorkLogoMobile ref={logo} />
